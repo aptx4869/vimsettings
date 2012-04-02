@@ -1,231 +1,278 @@
-set nocompatible "不使用兼容模式
-autocmd! bufwritepost .vimrc source %
 
-" map 我的常用按键
-let mapleader=","
-nmap <c-e> :BufExplorer<cr>
-nmap <c-d> :NERDTreeToggle<cr>
-" 我使用 Dvorak 键盘布局，因此以上设置对我来说很方便
-" 相当于 Qwerty 键盘上按 wf 和 wr
-" 还是换成 c-e, c-d 方便
+set nocompatible
+source $VIMRUNTIME/vimrc_example.vim
+set history=500
+set nobackup
 
-map <C-g> <ESC>:w<CR>
-imap <C-g> <ESC>:w<CR>
-imap <C-d> <DEL>
-map <C-o> <ESC>:e<CR>
-map <F2> <ESC>:w<CR>
-imap <F2> <ESC>:w<CR>
-cmap w!! w !sudo tee % >/dev/null
-map <f3> :w\|!node %<cr>
-map <f4> :w\|!python -i %<cr>
-"map <f4> :w\|!python -i %<cr>
-"map <f3> :w\|!gcc-3 -ggdb3 % && cat %.input \| a.exe<cr>
-"map <f4> :w\|!gcc-3 -ggdb3 % && a.exe<cr>
-"map <f5> :w\|!g++-3 -ggdb3 % && cat %.input \| a.exe<cr>
-"map <f6> :w\|!g++-3 -ggdb3 % && a.exe<cr>
-"map <F5> :VimwikiAll2HTML<CR><CR>
-map <f5> :w\|!gccgo % && ./a.out<cr>
-map <F6> :!bash /home/yuest/y/.build.sh<CR>
-set pastetoggle=<F7> "粘贴代码用
+set diffexpr=MyDiff()
+function MyDiff()
+    let opt = '-a --binary '
+    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+    let arg1 = v:fname_in
+    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+    let arg2 = v:fname_new
+    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+    let arg3 = v:fname_out
+    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+    let eq = ''
+    if $VIMRUNTIME =~ ' '
+    if &sh =~ '\<cmd'
+	    let cmd = '""' . $VIMRUNTIME . '\diff"'
+	    let eq = '"'
+	else
+	    let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+	endif
+    else
+	let cmd = $VIMRUNTIME . '\diff'
+    endif
+    silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+endfunction
 
-nmap <C-Tab> <C-w><C-w>
-nmap <C-h> <C-w>h
-nmap <C-l> <C-w>l
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
+"Set mapleader
+let mapleader = ";"
 
-nmap <C-t> :tabnew<cr>
-nmap <C-p> :tabprevious<cr>
-nmap <C-n> :tabnext<cr>
-nmap <C-q> ZZ
+" Platform
+function! MySys()
+    if has("win32")
+	return "windows"
+    else
+	return "linux"
+    endif
+endfunction
 
-" Tab键和行尾空格可见
-set list
-set listchars=tab:>\ ,trail:_
+function! SwitchToBuf(filename)
+    "let fullfn = substitute(a:filename, "^\\~/", $HOME . "/", "")
+    " find in current tab
+    let bufwinnr = bufwinnr(a:filename)
+    if bufwinnr != -1
+	exec bufwinnr . "wincmd w"
+	return
+    else
+	" find in each tab
+	tabfirst
+	let tab = 1
+	while tab <= tabpagenr("$")
+	    let bufwinnr = bufwinnr(a:filename)
+	    if bufwinnr != -1
+		exec "normal " . tab . "gt"
+		exec bufwinnr . "wincmd w"
+		return
+	    endif
+	    tabnext
+	    let tab = tab + 1
+	endwhile
+	" not exist, new tab
+	exec "tabnew " . a:filename
+    endif
+endfunction
 
-"set rnu "使用相对行号 (7.3)
-set number "显示行号
-set ruler "在右下角显示当前行列等信息
-syntax enable "语法高亮提示
-filetype indent on "根据文件类型自动缩进
-filetype plugin on "根据文件类型加载插件
+" For windows version
+if MySys() == 'windows'
+    source $VIMRUNTIME/mswin.vim
+    behave mswin
+    nunmap <C-A>
+    iunmap <C-Tab>
+endif 
 
-" 使用 4 个空格缩进而不用 Tab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set smarttab
-
-if has('win32')
-    language message zh_CN.UTF-8
-    set langmenu=en_US.GBK
-    source $VIMRUNTIME/delmenu.vim
-    source $VIMRUNTIME/menu.vim
+"Fast edit vimrc
+if MySys() == 'linux'
+    " 帮助文档
+    set helplang=cn
+    "Fast reloading of the .vimrc
+    map <silent> <leader>ss :source ~/.vimrc<cr>
+    "Fast editing of .vimrc
+    map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
+    "When .vimrc is edited, reload it
+    autocmd! bufwritepost .vimrc source ~/.vimrc
+    autocmd FileType python nmap <F12> :!python %
+    autocmd FileType tex nmap <F12> :!pdflatex %
+    set guifont=Arial\ monospaced\ for\ SAP\ 18
+elseif MySys() == 'windows'
+    " Disable alt menu
+    set winaltkeys=no
+    " Set helplang
+    set helplang=cn
+    "Fast reloading of the _vimrc
+    map <silent> <leader>ss :source $vim/_vimrc<cr>
+    "Fast editing of _vimrc
+    map <silent> <leader>ee :call SwitchToBuf("c:/Program Files/Vim/_vimrc")<cr>
+    "When _vimrc is edited, reload it
+    autocmd! bufwritepost _vimrc source $vim/_vimrc
+    autocmd FileType python nmap <F12> :!python.exe %
+    autocmd FileType tex nmap <F12> :!pdflatex.exe %
+    au BufNewFile,BufRead AutoHotkey.ahk nmap <F12> :w<Enter><Esc>:mksession! lastsession.vim<Enter>
+    set guifont=Arial_monospaced_for_SAP:h14:cANSI
+    set gfw=Yahei_Mono:h14:cGB2312
+    " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
+    " can be called correctly.
+    set shellslash
+    set enc=chinese
 endif
 
+" execute project related configuration in current directory
+if filereadable("workspace.vim")
+    source workspace.vim
+endif 
 
-set wrap "自动折行
-"set linebreak "折行不断词，让英文阅读更舒服些
-set nolinebreak "这是为了适应中文换行
-set backspace=start,indent,eol "让 Backspace 键可以删除换行
+"au BufNewFile,BufRead *.reply			setf reply
+"autocmd FileType reply nmap <Esc>i签名档<Esc>ZZ
+
+" This function is used for the 'omnifunc' option.
+
+nmap <silent> <leader>fe :Sexplore!<cr> 
+
+inoremap <M-h> <Left>
+inoremap <M-j> <Down>
+cnoremap <M-j> <Down>
+inoremap <M-k> <Up>
+cnoremap <M-k> <Up>
+inoremap <M-l> <Right>
+
+inoremap <SID>ou,. <Plug>IMAP_JumpForward
+inoremap <C-B> <Esc>^i
+inoremap <C-E> <Esc>$a
+inoremap <F2> <Esc>:w<Enter>a
+nmap <leader>a "ayy@a
+nmap <leader>s :%!sort 
+nmap <F2> :w<Enter>
+nmap <F3> :g/^.*/pu_<Enter>
+set pastetoggle=<F4>
+nmap <F5> :q!<Enter>
+nmap <f7> :'a,'bw! Lib/file
+nmap <F8> :TlistToggle<Enter>
+nmap <F11> :!ctags -R
+nmap <C-BS> bdw
+imap <C-BS> <Esc>vbxa
+imap <C-Del> wdw
+imap <C-Del> <esc>vexi
+
+au BufNewFile,BufRead AutoHotkey.ahk nmap <F11> :!ctags -R ./AutoHotKey.ahk ./Lib/*.ahk
+nmap <F6> bvey:%s<<C-R>0>/<C-R>0
+nmap <S-F6> bvey:'a,'bs/\v<<C-R>0>/<C-R>0
+nmap <C-F12> :mksession lastsession.vim
+nmap <C-F11> :source lastsession.vim<Enter>
+"set verbose=9
+"i签名档<Esc>ZZ
+nnoremap / /\v
+cnoremap %s %s/\v
+no s :
+no S :
+no - $
+no _ ^
+"no N <C-w><C-w>
+"no T <C-w><C-r>
+"no D <C-w><C-r>
+""""""""""""""""""""""""""""""
+" Tag list (ctags)
+" TagList 插件设置
+""""""""""""""""""""""""""""""
+
+if MySys() == "windows"                "设定windows系统中ctags程序的位置
+    let Tlist_Ctags_Cmd = 'ctags'
+elseif MySys() == "linux"              "设定linux系统中ctags程序的位置
+    let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+endif
+let Tlist_Show_One_File = 1            "不同时显示多个文件的tag，只显示当前文件的
+let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
+"let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口 
+
+""""""""""""""""""""""""""""""
+" netrw setting
+""""""""""""""""""""""""""""""
+let g:netrw_winsize = 20
+
+
+noremap <silent> <leader><space> :silent noh<CR> 
+" Python 自动缩进统一使用空格
+autocmd FileType python setlocal et sta sw=4 sts=4
+autocmd FileType python nmap <F12> :!python.exe %
+autocmd FileType tex nmap <F12> :!pdflatex.exe %
+
+set scrolloff=3 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 不知道哪来的
+set is
+set tags+=tags;
+set wrap
+set nolinebreak
 set encoding=utf-8
-set fileencodings=ucs-bom,utf-8,cp936,gbk "中文支持
-set hidden "让切换 buffer 保持 undo 记录
-"set undofile "开启持久化撤销 (7.3)
-set viminfo='1000,f1,<500,%,h "持久保存文件光标位置等信息
-set autochdir "自动更换工作目录到当前编辑文件的目录
-
-"高亮搜索、渐进式搜索、忽略大小写
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-" 按空格或,/取消搜索高亮
-nmap <silent> <leader>/ :nohlsearch<CR>
-noremap <silent> <Space> :silent noh<CR> 
-
-set mouse=nv "在 Normal 和 Visual 模式下使用鼠标
-
-"高亮所在行、列
-set cursorline
-set cursorcolumn
-
-set foldmethod=indent "以缩自动折叠显示文档
-set scrolloff=5 "光标碰到第五行、倒数第五行时就上下卷屏
-set autoread "如果正在编辑的文件在打开后又有其他程序更新，则自动加载
-
-"Emacs 式快捷键
-inoremap <C-A> <Home>
-inoremap <C-E> <End>
-inoremap <C-F> <Right>
-inoremap <C-B> <Left>
-
-au BufRead,BufNewFile *.j2,*.mustache set filetype=html
-au BufRead,BufNewFile *.k set filetype=javascript
-"autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
-
-" Leeiio 童鞋对以下设置亦有贡献
-" https://github.com/Leeiio/Vim/blob/master/vimrc
-
-" 获取当前目录
-func! GetPWD()
-    return substitute(getcwd(), "", "", "g")
-endf
-
-" 关闭遇到错误时的声音提示
-set noerrorbells
-
-" 命令行与状态行
-set cmdheight=1 " 设置命令行的高度
-set laststatus=2 " 始终显示状态行
-set stl=\ [File]\ %F%m%r%h%y[%{&fileformat},%{&fileencoding}]\ %w\ \ [PWD]\ %r%{GetPWD()}%h\ %=\ [Line]%l/%L\ %=\[%P] "设置状态栏的信息
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1 " 如果你要打开的文件编码不在此列，那就添加进去
+set fileencoding=utf-8
+set termencoding=utf-8
 
 
-"设置配色方案
-"http://www.h3rald.com/articles/herald-vim-color-scheme/
-colo herald
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+filetype plugin on
 
-" 安装的插件及其设置
+" can be called correctly.
+"set shellslash
 
-" JavaScript syntax
-" http://www.vim.org/scripts/script.php?script_id=1491
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
 
-" Better JavaScript Indentation
-" 这是经我使用后感觉最好的 JavaScript Indent 文件。对以匿名函数作参数都能
-" 很好地缩进。
-" 包括了上面的 JavaScript syntax 0.7.7 版本
-" http://vim.sourceforge.net/scripts/script.php?script_id=2765
+" OPTIONAL: This enables automatic indentation as you type.
+filetype indent on
 
-" javaScriptLint.vim
-" http://www.vim.org/scripts/script.php?script_id=2578
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
 
-" VimBall 安装插件必备
-" http://www.vim.org/scripts/script.php?script_id=1502
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Use pathogen to easily modify the runtime path to include all
-" plugins under the ~/.vim/bundle directory
-" http://www.vim.org/scripts/script.php?script_id=2332
-call pathogen#infect()
+" SuperTab 设置
+set completeopt=longest,menu
+let g:SuperTabRetainCompletionType=2 
+let g:SuperTabDefaultCompletionType="<C-X><C-N>" 
+autocmd FileType python let g:SuperTabDefaultCompletionType="<C-X><C-O>" 
 
-" delimitMate 自动补完括号等配对
-" http://www.vim.org/scripts/script.php?script_id=2754
-"let delimitMate_expand_space = 1 "配对内按空格键在光标左右均插入空格
-"let delimitMate_expand_cr = 1 "配对内按回车键把光标放在中间空行
-" 在 html,j2 文件内百分号也作为配对自动插入，方便 jinja2 模板开发
-"au FileType html,j2 let b:delimitMate_quotes = "\" ' %"
-" 修复 Emacs 式编辑快捷键
-"imap <C-A> <Plug>delimitMateHome
-"imap <C-E> <Plug>delimitMateEnd
-"imap <C-F> <Plug>delimitMateRight
-"imap <C-B> <Plug>delimitMateLeft
+au BufNewFile,BufRead *.ahk set omnifunc=ccomplete#Complete 
+au BufNewFile,BufRead *.ahk set path+=Lib
+au BufNewFile,BufRead *.ahk inoremap , ,<Space>
+au BufNewFile,BufRead *.ahk inoremap <C-Tab> <C-X><C-N>
+au BufNewFile,BufRead *.ahk let g:SuperTabDefaultCompletionType="<C-X><C-O>" 
+au BufNewFile,BufRead *.ahk inoremap == <Space>==<Space>
+au BufNewFile,BufRead *.ahk inoremap := <Space>:=<Space>
+au BufNewFile,BufRead *.ahk inoremap != <Space>!=<Space>
+au BufNewFile,BufRead *.ahk inoremap += <Space>+=<Space>
+au BufNewFile,BufRead *.ahk inoremap -= <Space>-=<Space>
+au BufNewFile,BufRead *.ahk inoremap *= <Space>*=<Space>
+au BufNewFile,BufRead *.ahk inoremap /= <Space>/=<Space>
+au BufNewFile,BufRead *.ahk inoremap .= <Space>.=<Space>
 
-" VimWiki 记笔记
-" http://www.vim.org/scripts/script.php?script_id=2226
-let g:vimwiki_menu = ''
-let g:vimwiki_badsyms = ' '
-let g:vimwiki_browsers = ['firefox']
-let wiki1 = {}
-let wiki1.path = '/home/yuest/Dropbox/vimwiki/think'
-let wiki2 = {}
-let wiki2.path = '/home/yuest/Dropbox/vimwiki/note'
-let wiki2.netest_syntaxes = {'py': 'python', 'js': 'javascript', 'html': 'html', 'css': 'css'}
-let wiki2.auto_export = 1
-let wiki2.html_header = '/home/yuest/Dropbox/vimwiki/note/header.tpl'
-let wiki2.html_footer = '/home/yuest/Dropbox/vimwiki/note/footer.tpl'
-let g:vimwiki_list = [wiki1, wiki2]
+au BufNewFile,BufRead bom*.csv :g/"/j
+au BufNewFile,BufRead bom*.csv :%s/\v^.*(\d{10})/\1
+au BufNewFile,BufRead bom*.csv :g/^\D/d
+au BufNewFile,BufRead bom*.csv :%s/\v^(\d{10})((-\>.*,+)|(\s*".*))?$/\1
+au BufNewFile,BufRead bom*.csv :%s/\v^(\d{10}).*,(\d+(\.\d+)?),{4}$/\1,\2
+au BufNewFile,BufRead bom*.csv :%s/\v^(\d{10},).*,(\d+((\.\d+)|(\s*\/\s*\d+))?).*$/\1\2
 
-" BufExplorer 方便切换 Buffer
-" http://www.vim.org/scripts/script.php?script_id=42
-map <F9> :BufExplorer<CR>
+"-- omnicppcomplete setting --
+"set completeopt=menu,menuone
+"let OmniC_MayCompleteDot = 1 " autocomplete with .
+"let OmniC_SelectFirstItem = 2 " select first item (but don't insert)
+"let OmniC_ShowPrototypeInAbbr = 1 " show function prototype  in popup window
+"let OmniC_GlobalScopeSearch=1
+"let OmniC_DisplayMode=1
+"let OmniC_DefaultNamespaces=["std"]
 
-" ZenCoding 方便写HTML
-" http://www.vim.org/scripts/script.php?script_id=2981
-imap <C-A-E> <Plug>ZenCodingExpandNormal
-vmap <C-A-E> <Plug>ZenCodingExpandVisual
-let g:user_zen_settings = {
-\  'indentation' : '    ',
-\  'perl' : {
-\    'aliases' : {
-\      'req' : 'require '
-\    },
-\    'snippets' : {
-\      'use' : "use strict\nuse warnings\n\n",
-\      'warn' : "warn \"|\";",
-\    }
-\  }
-\}
 
-" The NERD Tree 方便打开文件
-" http://www.vim.org/scripts/script.php?script_id=1658
-map <F8> :NERDTreeToggle<CR>
+" 代码折叠设置
+set foldmethod=syntax
+au BufNewFile,BufRead *.ahk set foldmethod=indent
+set foldlevel=100
 
-" HTML5 syntax
-" http://www.vim.org/scripts/script.php?script_id=3232
-
-" Markdown
-" https://github.com/plasticboy/vim-markdown
-au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd
-
-" vim-jade
-" https://github.com/digitaltoad/vim-jade
-" Jade
-autocmd BufNewFile,BufReadPost *.jade set filetype=jade
-" Stylus
-" https://github.com/wavded/vim-stylus
-autocmd BufNewFile,BufReadPost *.styl set filetype=stylus
-autocmd BufNewFile,BufReadPost *.stylus set filetype=stylus
-au BufWritePost *.styl,*.stylus silent !stylus > %:r.css < %:p
-
-" Go Language Support
-" http://golang.org/misc/vim/
-au BufRead,BufNewFile *.go set filetype=go
-
-" AutoClose
-" http://www.vim.org/scripts/script.php?script_id=2009
-"
-" EasyMotion
-" https://github.com/Lokaltog/vim-easymotion
-"
-" vim-less
-" https://github.com/groenewege/vim-less
+set cin   
+"实现C程序的缩进
+set sw=4   
+set number
+set smartindent
+behave xterm
+set enc=chinese
+au BufNewFile,BufRead *.reply set encoding=utf-8
+au BufNewFile,BufRead *.reply set fileencoding=utf-8
+au BufNewFile,BufRead *.reply nmap <F2> <Esc>GA<CR>才不用什么js脚本，这是vim签名档 <Esc>ZZ
+"au BufNewFile,BufRead *.reply nmap <F3> :set encoding=utf-8
