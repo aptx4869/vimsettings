@@ -17,7 +17,7 @@ function MyDiff()
     if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
     let eq = ''
     if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
+	if &sh =~ '\<cmd'
 	    let cmd = '""' . $VIMRUNTIME . '\diff"'
 	    let eq = '"'
 	else
@@ -115,27 +115,26 @@ if filereadable("workspace.vim")
     source workspace.vim
 endif 
 
-"au BufNewFile,BufRead *.reply			setf reply
-"autocmd FileType reply nmap <Esc>i签名档<Esc>ZZ
-
-" This function is used for the 'omnifunc' option.
-
 nmap <silent> <leader>fe :Sexplore!<cr> 
 
 inoremap <M-h> <Left>
+cnoremap <M-h> <Left>
 inoremap <M-j> <Down>
 cnoremap <M-j> <Down>
 inoremap <M-k> <Up>
 cnoremap <M-k> <Up>
 inoremap <M-l> <Right>
+cnoremap <M-l> <Right>
 
 inoremap <SID>ou,. <Plug>IMAP_JumpForward
 inoremap <C-B> <Esc>^i
 inoremap <C-E> <Esc>$a
 inoremap <F2> <Esc>:w<Enter>a
+cnoremap $s submatch()<Left>
 nmap <leader>a "ayy@a
 nmap <leader>s :%!sort 
 nmap <F2> :w<Enter>
+nmap <S-F2> :w !sudo tee %
 nmap <F3> :g/^.*/pu_<Enter>
 set pastetoggle=<F4>
 nmap <F5> :q!<Enter>
@@ -189,6 +188,24 @@ autocmd FileType python setlocal et sta sw=4 sts=4
 autocmd FileType python nmap <F12> :!python.exe %
 autocmd FileType tex nmap <F12> :!pdflatex.exe %
 
+au FileType python runtime! syntax/python.vim
+au FileType python unlet! b:current_syntax
+au FileType python syntax include @html syntax/html.vim
+au FileType python syntax match Character /%([a-zA-Z]\+)s/ contains=Todo
+au FileType python syntax region pythonCode start='"""\n\s*<[^<]\+>' keepend end='<[^<]\+>\s*\n"""' contains=@html
+au FileType python inoremap <buffer> $r return
+au FileType python inoremap <buffer> $i import
+au FileType python inoremap <buffer> $p print
+au FileType python inoremap <buffer> $f #--- P ----------------------------------------------<esc>FPxi
+au FileType python map <buffer> <leader>1 /class
+au FileType python map <buffer> <leader>2 /def
+au FileType python map <buffer> <leader>C ?class
+au FileType python map <buffer> <leader>D ?def
+
+"au FileType python syntax include @python syntax/python.vim
+"au FileType python syntax region pythonCode start="=\"\"\"" end="\"\"\"" contains=@html
+"au FileType python syntax match Character '%(\w+)s' contains=Todo
+"au FileType python syntax region htmlCode start="=\"\"\"" end="\"\"\"" contains=@html
 set scrolloff=3 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 不知道哪来的
@@ -227,7 +244,7 @@ let g:tex_flavor='latex'
 set completeopt=longest,menu
 let g:SuperTabRetainCompletionType=2 
 let g:SuperTabDefaultCompletionType="<C-X><C-N>" 
-autocmd FileType python let g:SuperTabDefaultCompletionType="<C-X><C-O>" 
+"autocmd FileType python let g:SuperTabDefaultCompletionType="<C-X><C-O>" 
 
 au BufNewFile,BufRead *.ahk set omnifunc=ccomplete#Complete 
 au BufNewFile,BufRead *.ahk set path+=Lib
@@ -242,14 +259,23 @@ au BufNewFile,BufRead *.ahk inoremap -= <Space>-=<Space>
 au BufNewFile,BufRead *.ahk inoremap *= <Space>*=<Space>
 au BufNewFile,BufRead *.ahk inoremap /= <Space>/=<Space>
 au BufNewFile,BufRead *.ahk inoremap .= <Space>.=<Space>
+au BufNewFile,BufRead *.ahk inoremap ( <Space>(<Space>
 
-au BufNewFile,BufRead bom*.csv :g/"/j
+"au BufNewFile,BufRead bom*.csv :g/\v^[^"]*"[^"]*$/j
+au BufNewFile,BufRead bom*.csv :/\v.*$\n(\d\.\d+.*$)+/,/\v,@<!(^\d\.\d+.*$\n)(\d[^.])@=/w %a
+au BufNewFile,BufRead bom*.csv :g/^\v\d+\.\d/d
 au BufNewFile,BufRead bom*.csv :%s/\v^.*(\d{10})/\1
 au BufNewFile,BufRead bom*.csv :g/^\D/d
-au BufNewFile,BufRead bom*.csv :%s/\v^(\d{10})((-\>.*,+)|(\s*".*))?$/\1
+"au BufNewFile,BufRead bom*.csv :%s/\v^(\d{10})((-\>.*,+)|(\s*".*))?$/\1
 au BufNewFile,BufRead bom*.csv :%s/\v^(\d{10}).*,(\d+(\.\d+)?),{4}$/\1,\2
 au BufNewFile,BufRead bom*.csv :%s/\v^(\d{10},).*,(\d+((\.\d+)|(\s*\/\s*\d+))?).*$/\1\2
+au BufNewFile,BufRead bom*.csv :%s/\v,+$//g
+au BufNewFile,BufRead bom*.csv :%s/\//,,
 
+au BufNewFile,BufRead bom*.csva :%s/\v^.*(\d{10})/\1
+au BufNewFile,BufRead bom*.csva :1s/\v^.*(\d{10}).*/\1
+"au BufNewFile,BufRead bom*.csva :%s/\v^(\d{10}).*,(\d+(\.\d+)?),{4}$/\1,\2
+au BufNewFile,BufRead bom*.csva :%s/\v^(\d{10},).*,(\d+((\.\d+)|(\s*\/\s*\d+))?).*$/\1\2
 "-- omnicppcomplete setting --
 "set completeopt=menu,menuone
 "let OmniC_MayCompleteDot = 1 " autocomplete with .
