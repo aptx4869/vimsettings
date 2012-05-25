@@ -182,11 +182,28 @@ let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口
 let g:netrw_winsize = 20
 
 
+
+let g:T_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
+""""""""""""""""""""""""""""""""""""""""""""""
+
 noremap <silent> <leader><space> :silent noh<CR> 
 " Python 自动缩进统一使用空格
 autocmd FileType python setlocal et sta sw=4 sts=4
 autocmd FileType python nmap <F12> :!python.exe %
 autocmd FileType tex nmap <F12> :!pdflatex.exe %
+"autocmd! BufNewFile *.py silent! 0r $VIM/vimfiles/skel/Template.%:e
+
+""""""""""""""template setting""""""""""""""""
+let g:template_load = 1
+
+let g:template_tags_replacing = 1
+
+let g:T_AUTHOR = "aptx4869"
+
+let g:T_AUTHOR_EMAIL = "ling548@gmail.com"
+let g:template_path = $VIM . "/vimfiles/skel"
+let g:template_prefix = "Template"
+let g:T_AUTHOR_WEBSITE = "https://github.com/aptx4869"
 
 au FileType python runtime! syntax/python.vim
 au FileType python unlet! b:current_syntax
