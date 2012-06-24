@@ -1,0 +1,10 @@
+inoremap == <Space>==<Space>
+inoremap === <Space>===<Space>
+"inoremap = <Space>=<Space>
+inoremap != <Space>!=<Space>
+inoremap += <Space>+=<Space>
+inoremap -= <Space>-=<Space>
+inoremap *= <Space>*=<Space>
+inoremap /= <Space>/=<Space>
+inoremap .= <Space>.=<Space>
+inoremap , ,<Space>
