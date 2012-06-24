@@ -1,54 +1,52 @@
-
 set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
+so $VIMRUNTIME/vimrc_example.vim
 set history=500
 set nobackup
 
-set diffexpr=MyDiff()
-function MyDiff()
+fu! MyDiff()
     let opt = '-a --binary '
-    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+    if &diffopt =~ 'icase' | let opt = opt . '-i ' | en
+    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | en
     let arg1 = v:fname_in
-    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | en
     let arg2 = v:fname_new
-    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | en
     let arg3 = v:fname_out
-    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | en
     let eq = ''
     if $VIMRUNTIME =~ ' '
 	if &sh =~ '\<cmd'
 	    let cmd = '""' . $VIMRUNTIME . '\diff"'
 	    let eq = '"'
-	else
+	el
 	    let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-	endif
-    else
+	en
+    el
 	let cmd = $VIMRUNTIME . '\diff'
-    endif
-    silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+    en
+    silent exec '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
 "Set mapleader
 let mapleader = ";"
 
 " Platform
-function! MySys()
+fu! MySys()
     if has("win32")
 	return "windows"
-    else
+    el
 	return "linux"
-    endif
-endfunction
+    en
+endf
 
-function! SwitchToBuf(filename)
+fu! SwitchToBuf(filename)
     "let fullfn = substitute(a:filename, "^\\~/", $HOME . "/", "")
     " find in current tab
     let bufwinnr = bufwinnr(a:filename)
     if bufwinnr != -1
 	exec bufwinnr . "wincmd w"
 	return
-    else
+    el
 	" find in each tab
 	tabfirst
 	let tab = 1
@@ -58,110 +56,87 @@ function! SwitchToBuf(filename)
 		exec "normal " . tab . "gt"
 		exec bufwinnr . "wincmd w"
 		return
-	    endif
+	    en
 	    tabnext
 	    let tab = tab + 1
 	endwhile
 	" not exist, new tab
 	exec "tabnew " . a:filename
-    endif
-endfunction
+    en
+endf
 
-" For windows version
-if MySys() == 'windows'
-    source $VIMRUNTIME/mswin.vim
-    behave mswin
-    nunmap <C-A>
-    iunmap <C-Tab>
-endif 
+" 帮助文档
+set helplang=cn
 
-"Fast edit vimrc
+""""""""""""""template setting""""""""""""""""
+let g:template_load = 1
+let g:template_tags_replacing = 1
+let g:T_AUTHOR = "aptx4869"
+let g:T_AUTHOR_EMAIL = "ling548@gmail.com"
+let g:template_path = $VIM . "/vimfiles/skel"
+let g:template_prefix = "Template"
+let g:T_AUTHOR_WEBSITE = "https://github.com/aptx4869"
+nmap <leader>tp :call LoadTemplate()<Enter>
+set scrolloff=3 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 if MySys() == 'linux'
-    " 帮助文档
-    set helplang=cn
     "Fast reloading of the .vimrc
-    map <silent> <leader>ss :source ~/.vimrc<cr>
+    map <silent> <leader>ss :so ~/.vimrc<cr>
     "Fast editing of .vimrc
     map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
     "When .vimrc is edited, reload it
-    autocmd! bufwritepost .vimrc source ~/.vimrc
-    autocmd FileType python nmap <F12> :!python %
-    autocmd FileType tex nmap <F12> :!pdflatex %
+    au! bufwritepost .vimrc so ~/.vimrc
+    au FileType python nmap <F12> :!python %
+    au FileType ruby nmap <F12> :!ruby %
+    au FileType tex nmap <F12> :!pdflatex %
     set guifont=Arial\ monospaced\ for\ SAP\ 18
+    nmap <S-F2> :w !sudo tee %
+	let g:template_path = $HOME . "/.vim/skel"
+    "set notimeout          " 映射时不检查超时
+    "set ttimeout           " 终端键码检查超时
+    set timeoutlen=380     " 超时为 100 毫秒
 elseif MySys() == 'windows'
+    set diffexpr=MyDiff()
+    so $VIMRUNTIME/mswin.vim
+    behave mswin
+    " use C-A to add numbers
+    nunmap <C-A>
+    iunmap <C-Tab>
     " Disable alt menu
     set winaltkeys=no
-    " Set helplang
-    set helplang=cn
+
     "Fast reloading of the _vimrc
-    map <silent> <leader>ss :source $vim/_vimrc<cr>
-    "Fast editing of _vimrc
-    map <silent> <leader>ee :call SwitchToBuf("c:/Program Files/Vim/_vimrc")<cr>
+    map <silent> <leader>ss :so $vim/_vimrc<cr>
+    "Fast editing of _vimrc with different PC
+    if hostname() == "BERT-PC"
+	map <silent> <leader>ee :call SwitchToBuf("C:/Program Files (x86)/Vim/_vimrc")<cr>
+    el
+	map <silent> <leader>ee :call SwitchToBuf("c:/Program Files/Vim/_vimrc")<cr>
+    en
     "When _vimrc is edited, reload it
-    autocmd! bufwritepost _vimrc source $vim/_vimrc
-    autocmd FileType python nmap <F12> :!python.exe %
-    autocmd FileType tex nmap <F12> :!pdflatex.exe %
-    au BufNewFile,BufRead AutoHotkey.ahk nmap <F12> :w<Enter><Esc>:mksession! lastsession.vim<Enter>
+    au! bufwritepost _vimrc so $vim/_vimrc
+
+    au FileType python nmap <F12> :!python.exe %
+    au FileType tex nmap <F12> :!pdflatex.exe %
+    au FileType ruby nmap <F12> :!C:\RailsInstaller\Ruby1.9.3\bin\ruby.exe %
+    au FileType autohotkey nmap <F12> :w<Enter><Esc>:mksession! lastsession.vim<Enter>
+    "set pretty fonts for coding
     set guifont=Arial_monospaced_for_SAP:h14:cANSI
     set gfw=Yahei_Mono:h14:cGB2312
+
     " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
     " can be called correctly.
     set shellslash
     set enc=chinese
-endif
+en
 
 " execute project related configuration in current directory
 if filereadable("workspace.vim")
-    source workspace.vim
-endif 
+    so workspace.vim
+en 
 
-nmap <silent> <leader>fe :Sexplore!<cr> 
-
-inoremap <M-h> <Left>
-cnoremap <M-h> <Left>
-inoremap <M-j> <Down>
-cnoremap <M-j> <Down>
-inoremap <M-k> <Up>
-cnoremap <M-k> <Up>
-inoremap <M-l> <Right>
-cnoremap <M-l> <Right>
-
-inoremap <SID>ou,. <Plug>IMAP_JumpForward
-inoremap <C-B> <Esc>^i
-inoremap <C-E> <Esc>$a
-inoremap <F2> <Esc>:w<Enter>a
-cnoremap $s submatch()<Left>
-nmap <leader>a "ayy@a
-nmap <leader>s :%!sort 
-nmap <F2> :w<Enter>
-nmap <S-F2> :w !sudo tee %
-nmap <F3> :g/^.*/pu_<Enter>
-set pastetoggle=<F4>
-nmap <F5> :q!<Enter>
-nmap <f7> :'a,'bw! Lib/file
-nmap <F8> :TlistToggle<Enter>
-nmap <F11> :!ctags -R
-nmap <C-BS> bdw
-imap <C-BS> <Esc>vbxa
-imap <C-Del> wdw
-imap <C-Del> <esc>vexi
-
-au BufNewFile,BufRead AutoHotkey.ahk nmap <F11> :!ctags -R ./AutoHotKey.ahk ./Lib/*.ahk
-nmap <F6> bvey:%s<<C-R>0>/<C-R>0
-nmap <S-F6> bvey:'a,'bs/\v<<C-R>0>/<C-R>0
-nmap <C-F12> :mksession lastsession.vim
-nmap <C-F11> :source lastsession.vim<Enter>
-"set verbose=9
-"i签名档<Esc>ZZ
-nnoremap / /\v
-cnoremap %s %s/\v
-no s :
-no S :
-no - $
-no _ ^
-"no N <C-w><C-w>
-"no T <C-w><C-r>
-"no D <C-w><C-r>
 """"""""""""""""""""""""""""""
 " Tag list (ctags)
 " TagList 插件设置
@@ -171,7 +146,7 @@ if MySys() == "windows"                "设定windows系统中ctags程序的位�
     let Tlist_Ctags_Cmd = 'ctags'
 elseif MySys() == "linux"              "设定linux系统中ctags程序的位置
     let Tlist_Ctags_Cmd = '/usr/bin/ctags'
-endif
+en
 let Tlist_Show_One_File = 1            "不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
 "let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口 
@@ -182,49 +157,11 @@ let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口
 let g:netrw_winsize = 20
 
 
-
 let g:T_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
-""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""for disable hight light""""""""""""
 
 noremap <silent> <leader><space> :silent noh<CR> 
-" Python 自动缩进统一使用空格
-autocmd FileType python setlocal et sta sw=4 sts=4
-autocmd FileType python nmap <F12> :!python.exe %
-autocmd FileType tex nmap <F12> :!pdflatex.exe %
-"autocmd! BufNewFile *.py silent! 0r $VIM/vimfiles/skel/Template.%:e
 
-""""""""""""""template setting""""""""""""""""
-let g:template_load = 1
-
-let g:template_tags_replacing = 1
-
-let g:T_AUTHOR = "aptx4869"
-
-let g:T_AUTHOR_EMAIL = "ling548@gmail.com"
-let g:template_path = $VIM . "/vimfiles/skel"
-let g:template_prefix = "Template"
-let g:T_AUTHOR_WEBSITE = "https://github.com/aptx4869"
-
-au FileType python runtime! syntax/python.vim
-au FileType python unlet! b:current_syntax
-au FileType python syntax include @html syntax/html.vim
-au FileType python syntax match Character /%([a-zA-Z]\+)s/ contains=Todo
-au FileType python syntax region pythonCode start='"""\n\s*<[^<]\+>' keepend end='<[^<]\+>\s*\n"""' contains=@html
-au FileType python inoremap <buffer> $r return
-au FileType python inoremap <buffer> $i import
-au FileType python inoremap <buffer> $p print
-au FileType python inoremap <buffer> $f #--- P ----------------------------------------------<esc>FPxi
-au FileType python map <buffer> <leader>1 /class
-au FileType python map <buffer> <leader>2 /def
-au FileType python map <buffer> <leader>C ?class
-au FileType python map <buffer> <leader>D ?def
-
-"au FileType python syntax include @python syntax/python.vim
-"au FileType python syntax region pythonCode start="=\"\"\"" end="\"\"\"" contains=@html
-"au FileType python syntax match Character '%(\w+)s' contains=Todo
-"au FileType python syntax region htmlCode start="=\"\"\"" end="\"\"\"" contains=@html
-set scrolloff=3 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 不知道哪来的
 set is
 set tags+=tags;
@@ -261,43 +198,22 @@ let g:tex_flavor='latex'
 set completeopt=longest,menu
 let g:SuperTabRetainCompletionType=2 
 let g:SuperTabDefaultCompletionType="<C-X><C-N>" 
-"autocmd FileType python let g:SuperTabDefaultCompletionType="<C-X><C-O>" 
+"au FileType python let g:SuperTabDefaultCompletionType="<C-X><C-O>" 
+let g:pcs_hotkey="<leader>pc"
 
-au BufNewFile,BufRead *.ahk set omnifunc=ccomplete#Complete 
-au BufNewFile,BufRead *.ahk set path+=Lib
-au BufNewFile,BufRead *.ahk inoremap , ,<Space>
-au BufNewFile,BufRead *.ahk inoremap <C-Tab> <C-X><C-N>
-au BufNewFile,BufRead *.ahk let g:SuperTabDefaultCompletionType="<C-X><C-O>" 
-au BufNewFile,BufRead *.ahk inoremap == <Space>==<Space>
-au BufNewFile,BufRead *.ahk inoremap := <Space>:=<Space>
-au BufNewFile,BufRead *.ahk inoremap != <Space>!=<Space>
-au BufNewFile,BufRead *.ahk inoremap += <Space>+=<Space>
-au BufNewFile,BufRead *.ahk inoremap -= <Space>-=<Space>
-au BufNewFile,BufRead *.ahk inoremap *= <Space>*=<Space>
-au BufNewFile,BufRead *.ahk inoremap /= <Space>/=<Space>
-au BufNewFile,BufRead *.ahk inoremap .= <Space>.=<Space>
-au BufNewFile,BufRead *.ahk inoremap ( <Space>(<Space>
-
-"au BufNewFile,BufRead bom*.csv :g/\v^[^"]*"[^"]*$/j
-au BufNewFile,BufRead bom*.csv :/\v.*$\n(\d\.\d+.*$)+/,/\v,@<!(^\d\.\d+.*$\n)(\d[^.])@=/w %a
-au BufNewFile,BufRead bom*.csv :g/^\v\d+\.\d/d
-au BufNewFile,BufRead bom*.csv :%s/\v^.*(\d{10})/\1
-au BufNewFile,BufRead bom*.csv :g/^\D/d
-"au BufNewFile,BufRead bom*.csv :%s/\v^(\d{10})((-\>.*,+)|(\s*".*))?$/\1
-au BufNewFile,BufRead bom*.csv :%s/\v^(\d{10}).*,(\d+(\.\d+)?),{4}$/\1,\2
-au BufNewFile,BufRead bom*.csv :%s/\v^(\d{10},).*,(\d+((\.\d+)|(\s*\/\s*\d+))?).*$/\1\2
-au BufNewFile,BufRead bom*.csv :%s/\v,+$//g
-au BufNewFile,BufRead bom*.csv :%s/\//,,
-
-au BufNewFile,BufRead bom*.csva :%s/\v^.*(\d{10})/\1
-au BufNewFile,BufRead bom*.csva :1s/\v^.*(\d{10}).*/\1
-"au BufNewFile,BufRead bom*.csva :%s/\v^(\d{10}).*,(\d+(\.\d+)?),{4}$/\1,\2
-au BufNewFile,BufRead bom*.csva :%s/\v^(\d{10},).*,(\d+((\.\d+)|(\s*\/\s*\d+))?).*$/\1\2
 "-- omnicppcomplete setting --
 "set completeopt=menu,menuone
+"au FileType css set omnifunc=csscomplete#CompleteCSS
+au FileType css setlocal omnifunc=csscomplete#CompleteCSS
+au FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+au FileType python setlocal omnifunc=pythoncomplete#Complete
+au FileType xml setlocal omnifunc=xmlcomplete#CompleteTags 
+
+
 "let OmniC_MayCompleteDot = 1 " autocomplete with .
 "let OmniC_SelectFirstItem = 2 " select first item (but don't insert)
-"let OmniC_ShowPrototypeInAbbr = 1 " show function prototype  in popup window
+"let OmniC_ShowPrototypeInAbbr = 1 " show fu prototype  in popup window
 "let OmniC_GlobalScopeSearch=1
 "let OmniC_DisplayMode=1
 "let OmniC_DefaultNamespaces=["std"]
@@ -305,7 +221,6 @@ au BufNewFile,BufRead bom*.csva :%s/\v^(\d{10},).*,(\d+((\.\d+)|(\s*\/\s*\d+))?)
 
 " 代码折叠设置
 set foldmethod=syntax
-au BufNewFile,BufRead *.ahk set foldmethod=indent
 set foldlevel=100
 
 set cin   
@@ -314,8 +229,23 @@ set sw=4
 set number
 set smartindent
 behave xterm
-set enc=chinese
-au BufNewFile,BufRead *.reply set encoding=utf-8
-au BufNewFile,BufRead *.reply set fileencoding=utf-8
-au BufNewFile,BufRead *.reply nmap <F2> <Esc>GA<CR>才不用什么js脚本，这是vim签名档 <Esc>ZZ
-"au BufNewFile,BufRead *.reply nmap <F3> :set encoding=utf-8
+
+"高亮所在行、列
+set cursorline
+set cursorcolumn
+
+if MySys() == 'windows'
+    au FileType python so $HOME/vimfiles/ftplugin/MyPython.vim
+    au Filetype ruby so $HOME/vimfiles/ftplugin/ruby-macros.vim
+    au FileType ruby so $HOME/vimfiles/ftplugin/MyRuby.vim
+    au FileType autohotkey so $HOME/vimfiles/ftplugin/MyAutoHotKey.vim
+    so $HOME/vimfiles/ftplugin/MyMisc.vim
+    so $HOME/vimfiles/MyKeyMaps.vim
+elseif MySys() == 'linux'
+    au FileType python so $HOME/.vim/ftplugin/MyPython.vim
+    au Filetype ruby so $HOME/.vim/ftplugin/ruby-macros.vim
+    au FileType ruby so $HOME/.vim/ftplugin/MyRuby.vim
+    au FileType autohotkey so $HOME/.vim/ftplugin/MyAutoHotKey.vim
+    so $HOME/.vim/ftplugin/MyMisc.vim
+    so $HOME/.vim/MyKeyMaps.vim
+en
