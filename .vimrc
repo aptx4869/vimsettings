@@ -96,7 +96,11 @@ if MySys() == 'linux'
 	let g:template_path = $HOME . "/.vim/skel"
     "set notimeout          " 映射时不检查超时
     "set ttimeout           " 终端键码检查超时
-    set timeoutlen=380     " 超时为 100 毫秒
+    "set timeoutlen=500     " 超时为 100 毫秒
+    if match($TERM, "screen")!=-1
+	set term=xterm
+    en
+    "set ttimeoutlen=10
 elseif MySys() == 'windows'
     set diffexpr=MyDiff()
     so $VIMRUNTIME/mswin.vim
@@ -232,7 +236,7 @@ behave xterm
 
 "高亮所在行、列
 set cursorline
-set cursorcolumn
+"set cursorcolumn
 
 if MySys() == 'windows'
     au FileType python so $HOME/vimfiles/ftplugin/MyPython.vim
