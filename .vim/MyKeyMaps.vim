@@ -35,6 +35,9 @@ set pastetoggle=<F4>
 nm <F5> :q!<CR>
 nm <f7> :'a,'bw! Lib/file
 nm <F8> :TlistToggle<CR>
+nm <S-F8> :NERDTreeToggle<CR>
+"for linux term
+nm [32~ :NERDTreeToggle<CR>
 nm <F11> :!ctags -R
 nm <C-BS> bdw
 im <C-BS> <Esc>vbxa
