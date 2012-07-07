@@ -13,3 +13,6 @@
 [submodule ".vim/bundle/XPTemplate"]
 	path = .vim/bundle/XPTemplate
 	url = git://github.com/drmingdrmer/xptemplate.git
+[submodule ".vim/bundle/NERD_tree"]
+	path = .vim/bundle/NERD_tree
+	url = git://github.com/vim-scripts/The-NERD-tree.git
