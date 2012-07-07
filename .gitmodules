@@ -16,3 +16,9 @@
 [submodule ".vim/bundle/NERD_tree"]
 	path = .vim/bundle/NERD_tree
 	url = git://github.com/vim-scripts/The-NERD-tree.git
+[submodule ".vim/bundle/matchit"]
+	path = .vim/bundle/matchit
+	url = git://github.com/vim-scripts/matchit.zip.git
+[submodule ".vim/bundle/vimviki"]
+	path = .vim/bundle/vimviki
+	url = git://github.com/vim-scripts/vimwiki.git
