@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/vimviki"]
 	path = .vim/bundle/vimviki
 	url = git://github.com/vim-scripts/vimwiki.git
+[submodule ".vim/bundle/vimwiki"]
+	path = .vim/bundle/vimwiki
+	url = git://github.com/vim-scripts/vimwiki.git
