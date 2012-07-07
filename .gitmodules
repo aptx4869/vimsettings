@@ -10,3 +10,6 @@
 [submodule ".vim/bundle/NERD_Commenter"]
 	path = .vim/bundle/NERD_Commenter
 	url = git://github.com/vim-scripts/The-NERD-Commenter.git
+[submodule ".vim/bundle/XPTemplate"]
+	path = .vim/bundle/XPTemplate
+	url = git://github.com/drmingdrmer/xptemplate.git
