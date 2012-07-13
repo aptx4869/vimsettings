@@ -29,6 +29,7 @@ cno $s submatch()<Left>
 nm <leader>a "ayyj@a
 nm <leader>s :%!sort 
 nm <leader>q :QB<CR>
+nm <leader>utf maggO#-*-encoding:utf-8-*-<Esc>`a
 nm <F2> :w<CR>
 nm <F3> :g/^.*/pu_<CR>
 set pastetoggle=<F4>

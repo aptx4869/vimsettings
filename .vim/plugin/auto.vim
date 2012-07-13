@@ -36,8 +36,8 @@ fu Cp()
 endf
 fu Py()
     nm mm :call Ct()<CR>
-    im mm <ESC>$
-    im nn <ESC>o
+    "im mm <ESC>$
+    "im nn <ESC>o
     im <C-F12> <ESC>
     if exists("$DISPLAY")
 	nm <C-F12> :call Cv()<CR>
@@ -47,8 +47,8 @@ fu Py()
 endf
 fu Cc()
     no != <SPACE>!=<SPACE>
-    im mm <ESC>A;<ESC>
-    im nn <ESC>A;<ESC>o
+    ""im mm <ESC>A;<ESC>
+    "im nn <ESC>A;<ESC>o
     if exists("$DISPLAY")
 	if &filetype == 'perl'
 	    nm mm :call Ct()<CR>

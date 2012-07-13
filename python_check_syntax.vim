@@ -46,7 +46,7 @@ import vim
 import compiler
 try:
     from pyflakes.checker import Checker
-except:  # pyflakes version <= 0.2.1
+except: # pyflakes version <= 0.2.1
     from pyflakes import Checker
 
 class VimFunction(object):
@@ -82,7 +82,7 @@ class VimQuickFix(object):
     def make(self, msgs):
         if msgs:
             keys = ['filename', 'lnum', 'text', 'type']
-            # errors = [dict(zip(keys, msg)) for msg in msgs if None not in msg] 
+            # errors = [dict(zip(keys, msg)) for msg in msgs if None not in msg]
             errors = [dict(zip(keys, msg)) for msg in msgs]
             vimfunc.setqflist(errors, 'r')
             self.open()
@@ -116,9 +116,9 @@ class PySyntaxChecker(object):
 
     # NOT IMPLEMENT COMPLETELY
     def pep8check(self, filename, message):
-        """
+"""
         Parse command line options and run checks on Python source.
-        """
+"""
         from modules import pep8
         from optparse import OptionParser
         import os
@@ -178,12 +178,12 @@ class PySyntaxChecker(object):
             options.ignore = []
         options.counters = {}
         options.messages = {}
-    #    if pref.py_check_skip_long_line:
-    #        pep8.maximum_line_length = None
-    #    if pref.py_check_skip_tailing_whitespace:
-    #        pep8.trailing_whitespace = None
-    #    if pref.py_check_skip_blank_lines:
-    #        pep8.blank_lines = None
+    # if pref.py_check_skip_long_line:
+    # pep8.maximum_line_length = None
+    # if pref.py_check_skip_tailing_whitespace:
+    # pep8.trailing_whitespace = None
+    # if pref.py_check_skip_blank_lines:
+    # pep8.blank_lines = None
         MyPep8(filename).check_all()
 
 pysyntaxchecker = PySyntaxChecker()
