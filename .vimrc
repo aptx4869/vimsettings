@@ -1,4 +1,6 @@
 set nocompatible
+"call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 so $VIMRUNTIME/vimrc_example.vim
 set history=500
 set nobackup
@@ -71,7 +73,7 @@ set helplang=cn
 """"""""""""""template setting""""""""""""""""
 let g:template_load = 1
 let g:template_tags_replacing = 1
-let g:T_AUTHOR = "aptx4869"
+let g:T_AUTHOR = $USER
 let g:T_AUTHOR_EMAIL = "ling548@gmail.com"
 let g:template_path = $VIM . "/vimfiles/skel"
 let g:template_prefix = "Template"
@@ -91,12 +93,27 @@ if MySys() == 'linux'
     au FileType python nmap <F12> :!python %
     au FileType ruby nmap <F12> :!ruby %
     au FileType tex nmap <F12> :!pdflatex %
-    set guifont=Arial\ monospaced\ for\ SAP\ 18
+    set guifont=Arial\ monospaced\ for\ SAP\ 14
+    "set gfw=Yahei\ Mono\ 29:cGB2312
     nmap <S-F2> :w !sudo tee %
-	let g:template_path = $HOME . "/.vim/skel"
+    nmap [24~ :w !sudo tee %
+    let g:template_path = $HOME . "/.vim/skel"
     "set notimeout          " 映射时不检查超时
     "set ttimeout           " 终端键码检查超时
-    set timeoutlen=380     " 超时为 100 毫秒
+    "set timeoutlen=500     " 超时为 100 毫秒
+    hi StatusLine cterm=reverse ctermfg=4
+    hi StatusLineNC cterm=underline,bold ctermfg=2
+    hi CursorColumn cterm=NONE ctermbg=8
+    hi CursorLine cterm=NONE ctermbg=8
+    set langmenu=zh_CN.UTF-8
+    source $VIMRUNTIME/delmenu.vim
+    source $VIMRUNTIME/menu.vim
+    language messages zh_CN.utf-8
+    if match($TERM, "screen")!=-1
+	set term=xterm
+    en
+    set t_Co=16
+    "set ttimeoutlen=10
 elseif MySys() == 'windows'
     set diffexpr=MyDiff()
     so $VIMRUNTIME/mswin.vim
@@ -171,6 +188,7 @@ set encoding=utf-8
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1 " 如果你要打开的文件编码不在此列，那就添加进去
 set fileencoding=utf-8
 set termencoding=utf-8
+set autoread
 
 
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
@@ -209,7 +227,7 @@ au FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 au FileType python setlocal omnifunc=pythoncomplete#Complete
 au FileType xml setlocal omnifunc=xmlcomplete#CompleteTags 
-
+au FileType ruby let g:SuperTabDefaultCompletionType="<C-X><C-U>" 
 
 "let OmniC_MayCompleteDot = 1 " autocomplete with .
 "let OmniC_SelectFirstItem = 2 " select first item (but don't insert)
@@ -234,6 +252,19 @@ behave xterm
 set cursorline
 set cursorcolumn
 
+set laststatus=2
+"always display status line
+
+set gdefault
+"make s/ / act as s/ / /g
+
+let g:EasyMotion_leader_key = "'"
+
+"use <shif-tab> for xptemplate rather than <tab>
+"because it confict with supertab 
+let g:xptemplate_nav_next = '<S-Tab>'
+let g:xptemplate_key = '<C-\>'
+
 if MySys() == 'windows'
     au FileType python so $HOME/vimfiles/ftplugin/MyPython.vim
     au Filetype ruby so $HOME/vimfiles/ftplugin/ruby-macros.vim
@@ -249,3 +280,4 @@ elseif MySys() == 'linux'
     so $HOME/.vim/ftplugin/MyMisc.vim
     so $HOME/.vim/MyKeyMaps.vim
 en
+
