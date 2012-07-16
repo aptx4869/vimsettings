@@ -1,13 +1,25 @@
 这是我的 vimrc，备份及分享于 GitHub。请感觉自由去拷贝它。
 
- >This is my collection of AutoHotKey (AHK) scripts. For more information on AHK
- >see [the AutoHotKey website](http://www.autohotkey.com/).
+## Usage
 
- >Scripts:
+**Backup** your setting first, and then run
+```
+git clone git
+cd vimsettings
+git submodule init
+git submodule update
+```
 
- >* **Lib/AutoBackup.ahk** - A script for auto backup files useing rsync in cygwin
- >* **Lib/WinGroup.ahk** - A script for easy managing user defined windows group
- >* **Lib/WoW.ahk** - A script for using a 5 button mouse to sand keys in the game World of Warcraft 
- >* **Lib/utils.ahk** - some functions I don't know where to put...
- >* **script/Datas/config.ini** - My config file sample for file backup and hotkeys
- >* **script/Datas/WoW.ini** - My config file sample for WoW.ahk
+## plugins
+
+* [*LaTeX_Suite*](git://github.com/vim-scripts/LaTeX-Suite-aka-Vim-LaTeX.git )
+* [*NERD_Commenter*](git://github.com/vim-scripts/The-NERD-Commenter.git )
+* [*NERD_tree*](git://github.com/vim-scripts/The-NERD-tree.git )
+* [*XPTemplate*](git://github.com/drmingdrmer/xptemplate.git )
+* [*git-vim*](git://github.com/motemen/git-vim.git )
+* [*matchit*](git://github.com/vim-scripts/matchit.zip.git )
+* [*vim-easymotion*](git://github.com/Lokaltog/vim-easymotion.git )
+* [*vim-less*](https://github.com/groenewege/vim-less.git )
+* [*vim-rails*](git://github.com/tpope/vim-rails.git )
+* [*vimwiki*](git://github.com/vim-scripts/vimwiki.git )
+* [*zencoding*](git://github.com/mattn/zencoding-vim.git )
