@@ -105,6 +105,7 @@ if MySys() == 'linux'
     hi StatusLineNC cterm=underline,bold ctermfg=2
     hi CursorColumn cterm=NONE ctermbg=8
     hi CursorLine cterm=NONE ctermbg=8
+		hi Search ctermbg=11
     set langmenu=zh_CN.UTF-8
     source $VIMRUNTIME/delmenu.vim
     source $VIMRUNTIME/menu.vim
@@ -213,21 +214,33 @@ let g:tex_flavor='latex'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " SuperTab 设置
-set completeopt=longest,menu
-let g:SuperTabRetainCompletionType=2 
-let g:SuperTabDefaultCompletionType="<C-X><C-N>" 
-"au FileType python let g:SuperTabDefaultCompletionType="<C-X><C-O>" 
-let g:pcs_hotkey="<leader>pc"
+"set completeopt=longest,menu
+"let g:SuperTabRetainCompletionType=2 
+"let g:SuperTabDefaultCompletionType="<C-X><C-N>" 
+""au FileType python let g:SuperTabDefaultCompletionType="<C-X><C-O>" 
+"let g:pcs_hotkey="<leader>pc"
+au FileType ruby,eruby let g:SuperTabDefaultCompletionType="<C-X><C-U>" 
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabRetainCompletionType=1
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+
 
 "-- omnicppcomplete setting --
 "set completeopt=menu,menuone
 "au FileType css set omnifunc=csscomplete#CompleteCSS
 au FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"au BufNewFile,BufRead *.scss setlocal omnifunc=csscomplete#CompleteCSS
 au FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 au FileType python setlocal omnifunc=pythoncomplete#Complete
 au FileType xml setlocal omnifunc=xmlcomplete#CompleteTags 
-au FileType ruby let g:SuperTabDefaultCompletionType="<C-X><C-U>" 
+au FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+au FileType ruby,eruby let g:rubycomplete_rails = 1
 
 "let OmniC_MayCompleteDot = 1 " autocomplete with .
 "let OmniC_SelectFirstItem = 2 " select first item (but don't insert)
@@ -267,17 +280,19 @@ let g:xptemplate_key = '<C-\>'
 
 if MySys() == 'windows'
     au FileType python so $HOME/vimfiles/ftplugin/MyPython.vim
-    au Filetype ruby so $HOME/vimfiles/ftplugin/ruby-macros.vim
+    au FileType ruby so $HOME/vimfiles/ftplugin/ruby-macros.vim
     au FileType ruby so $HOME/vimfiles/ftplugin/MyRuby.vim
     au FileType autohotkey so $HOME/vimfiles/ftplugin/MyAutoHotKey.vim
     so $HOME/vimfiles/ftplugin/MyMisc.vim
     so $HOME/vimfiles/MyKeyMaps.vim
+    so $HOME/vimfiles/neo_com_setting.vim
 elseif MySys() == 'linux'
     au FileType python so $HOME/.vim/ftplugin/MyPython.vim
-    au Filetype ruby so $HOME/.vim/ftplugin/ruby-macros.vim
+    au FileType ruby so $HOME/.vim/ftplugin/ruby-macros.vim
     au FileType ruby so $HOME/.vim/ftplugin/MyRuby.vim
     au FileType autohotkey so $HOME/.vim/ftplugin/MyAutoHotKey.vim
     so $HOME/.vim/ftplugin/MyMisc.vim
     so $HOME/.vim/MyKeyMaps.vim
+    so $HOME/.vim/neo_com_setting.vim
 en
 
