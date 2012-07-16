@@ -24,12 +24,20 @@ ino <C-B> <Esc>^i
 ino <C-E> <Esc>$a
 ino <F2> <Esc>:w<CR>a
 ino <S-CR> <Esc>o
+ino <F1> <C-X><C-O>
+ino <F3> <C-X><C-N>
+ino <C-O> <Esc>o
 
 cno $s submatch()<Left>
 nm <leader>a "ayyj@a
 nm <leader>s :%!sort 
 nm <leader>q :QB<CR>
-nm <leader>utf maggO#-*-encoding:utf-8-*-<Esc>`a
+nm <leader>utf mlggO#-*-encoding:utf-8-*-<Esc>`l
+"html format
+no <leader>htm :%s#\v(\<[^</]*/[^</]*\>)#\1\r<Cr>:%s#\(<%\)#\r\1<Cr>:%s#\(%>\)#\1\r<Cr>gg=G:g/^\s*$/d<Cr>
+"for zencoding
+nm <leader>5 v%<C-Y>,
+
 nm <F2> :w<CR>
 nm <F3> :g/^.*/pu_<CR>
 set pastetoggle=<F4>
