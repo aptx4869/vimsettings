@@ -150,10 +150,6 @@ elseif MySys() == 'windows'
     set enc=chinese
 en
 
-" execute project related configuration in current directory
-if filereadable("workspace.vim")
-    so workspace.vim
-en 
 
 """"""""""""""""""""""""""""""
 " Tag list (ctags)
@@ -296,3 +292,7 @@ elseif MySys() == 'linux'
     so $HOME/.vim/neo_com_setting.vim
 en
 
+" execute project related configuration in current directory
+if filereadable("workspace.vim")
+    so workspace.vim
+en 
