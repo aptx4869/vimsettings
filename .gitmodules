@@ -37,3 +37,15 @@
 [submodule ".vim/bundle/xml-vim"]
 	path = .vim/bundle/xml-vim
 	url = git://github.com/vim-scripts/xml.vim.git
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = git://github.com/ervandew/supertab.git
+[submodule ".vim/bundle/echofunc"]
+	path = .vim/bundle/echofunc
+	url = git://github.com/vim-scripts/echofunc.vim.git
+[submodule ".vim/bundle/taglist"]
+	path = .vim/bundle/taglist
+	url = git://github.com/vim-scripts/taglist.vim.git
+[submodule ".vim/bundle/google-translator"]
+	path = .vim/bundle/google-translator
+	url = git://github.com/maksimr/vim-translator.git

@@ -9,8 +9,9 @@ cd vimsettings
 git submodule init
 git submodule update
 ```
+I am useing a little bit strang Dvorak keyboard, so you should modify the keybindings to suit yourself.
 
-## plugins
+## Plugins
 
 * [*LaTeX_Suite*](https://github.com/vim-scripts/LaTeX-Suite-aka-Vim-LaTeX)
 * [*NERD_Commenter*](https://github.com/vim-scripts/The-NERD-Commenter)
@@ -19,8 +20,12 @@ git submodule update
 * [*git-vim*](https://github.com/motemen/git-vim)
 * [*matchit*](https://github.com/vim-scripts/matchit.zip)
 * [*neocomplcache*](https://github.com/Shougo/neocomplcache)
+* [*supertab*](https://github.com/ervandew/supertab)
+* [*vimcdoc*](http://vimcdoc.sourceforge.net/)
 * [*vim-easymotion*](https://github.com/Lokaltog/vim-easymotion)
 * [*vim-less*](https://github.com/groenewege/vim-less)
 * [*vim-rails*](https://github.com/tpope/vim-rails)
 * [*vimwiki*](https://github.com/vim-scripts/vimwiki)
 * [*zencoding*](https://github.com/mattn/zencoding-vim)
+
+

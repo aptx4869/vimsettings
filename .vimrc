@@ -270,7 +270,7 @@ set gdefault
 let g:EasyMotion_leader_key = "'"
 
 "use <shif-tab> for xptemplate rather than <tab>
-"because it confict with supertab 
+"because it conflict with supertab 
 let g:xptemplate_nav_next = '<S-Tab>'
 let g:xptemplate_key = '<C-\>'
 
@@ -296,3 +296,5 @@ en
 if filereadable("workspace.vim")
     so workspace.vim
 en 
+
+let g:goog_user_conf = {'langpair': 'en|zh_cn', 'v_key': 'T'}
