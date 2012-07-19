@@ -49,3 +49,9 @@
 [submodule ".vim/bundle/google-translator"]
 	path = .vim/bundle/google-translator
 	url = git://github.com/maksimr/vim-translator.git
+[submodule ".vim/bundle/fcitx"]
+	path = .vim/bundle/fcitx
+	url = git://github.com/vim-scripts/fcitx.vim.git
+[submodule ".vim/bundle/bufexplorer"]
+	path = .vim/bundle/bufexplorer
+	url = git://github.com/corntrace/bufexplorer.git
