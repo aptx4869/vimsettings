@@ -98,14 +98,14 @@ if MySys() == 'linux'
     nmap <S-F2> :w !sudo tee %
     nmap [24~ :w !sudo tee %
     let g:template_path = $HOME . "/.vim/skel"
-    "set notimeout          " 映射时不检查超时
-    "set ttimeout           " 终端键码检查超时
-    "set timeoutlen=500     " 超时为 100 毫秒
+    set notimeout          " 映射时不检查超时
+    set ttimeout           " 终端键码检查超时
+    set timeoutlen=360     " 超时为 100 毫秒
     hi StatusLine cterm=reverse ctermfg=4
     hi StatusLineNC cterm=underline,bold ctermfg=2
     hi CursorColumn cterm=NONE ctermbg=8
     hi CursorLine cterm=NONE ctermbg=8
-		hi Search ctermbg=11
+    hi Search ctermbg=12 ctermfg=6
     set langmenu=zh_CN.UTF-8
     source $VIMRUNTIME/delmenu.vim
     source $VIMRUNTIME/menu.vim

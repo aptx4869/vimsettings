@@ -29,6 +29,7 @@ ino <F3> <C-X><C-N>
 ino <C-O> <Esc>o
 
 cno $s submatch()<Left>
+no <C-F> :find<space>
 nm <leader>a "ayyj@a
 nm <leader>s :%!sort 
 nm <leader>q :QB<CR>
