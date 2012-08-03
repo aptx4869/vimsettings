@@ -62,8 +62,9 @@ nm <C-F11> :source lastsession.vim<CR>
 "set verbose=9
 nnoremap / /\v
 cno %s %s/\v
-no s :
-no S :
+no \ :
+no <leader>y "+y
+"no S :
 no - $
 no _ ^
 "no N <C-w><C-w>
