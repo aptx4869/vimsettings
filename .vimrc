@@ -94,7 +94,7 @@ if MySys() == 'linux'
     au FileType ruby nmap <F12> :!ruby %
     au FileType tex nmap <F12> :!pdflatex %
     set guifont=Arial\ monospaced\ for\ SAP\ 14
-    set gfw=文泉驿等宽微米黑\ 14
+    "set gfw=Yahei\ Mono\ 29:cGB2312
     nmap <S-F2> :w !sudo tee %
     nmap [24~ :w !sudo tee %
     let g:template_path = $HOME . "/.vim/skel"
@@ -105,7 +105,7 @@ if MySys() == 'linux'
     hi StatusLineNC cterm=underline,bold ctermfg=2
     hi CursorColumn cterm=NONE ctermbg=8
     hi CursorLine cterm=NONE ctermbg=8
-    "hi Search ctermbg=12 ctermfg=6
+    hi Search ctermbg=12 ctermfg=6
     set langmenu=zh_CN.UTF-8
     source $VIMRUNTIME/delmenu.vim
     source $VIMRUNTIME/menu.vim
@@ -164,6 +164,11 @@ en
 let Tlist_Show_One_File = 1            "不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
 "let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口 
+
+""""""""""""""""""""""""""""""
+" netrw setting
+""""""""""""""""""""""""""""""
+let g:netrw_winsize = 20
 
 
 let g:T_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
@@ -242,13 +247,12 @@ au FileType ruby,eruby let g:rubycomplete_rails = 1
 
 
 " 代码折叠设置
-"set foldenable
 set foldmethod=syntax
 set foldlevel=100
 
 set cin   
 "实现C程序的缩进
-set sw=4
+set sw=4   
 set number
 set smartindent
 behave xterm
@@ -284,38 +288,13 @@ elseif MySys() == 'linux'
     au FileType ruby so $HOME/.vim/ftplugin/MyRuby.vim
     au FileType autohotkey so $HOME/.vim/ftplugin/MyAutoHotKey.vim
     so $HOME/.vim/ftplugin/MyMisc.vim
-    so $HOME/.vim/neo_com_setting.vim
     so $HOME/.vim/MyKeyMaps.vim
+    so $HOME/.vim/neo_com_setting.vim
 en
 
 " execute project related configuration in current directory
 if filereadable("workspace.vim")
     so workspace.vim
-en
+en 
 
-colorscheme solarized
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-"set t_Co=256
-"set background=light
-set background=dark
 let g:goog_user_conf = {'langpair': 'en|zh_cn', 'v_key': 'T'}
-
-
-if has('cmdline_info')
-    set ruler " show the ruler
-    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
-    set showcmd " show partial commands in status line and
-    " selected characters/lines in visual mode
-endif
-
-
-au FileType xhtml,xml,eruby ru ftplugin/html/autoclosetag.vim
-
-
-
-"hi Pmenu guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-"hi PmenuSbar guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-"hi PmenuThumb guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE

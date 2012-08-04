@@ -1,6 +1,3 @@
-let mapleader = ";"
-
-noremap <silent> <leader><space> :silent noh<CR> 
 nm <silent> <leader>fe :Sexplore!<cr> 
 map<Up>   gk
 map<Down> gj
@@ -73,5 +70,3 @@ no _ ^
 "no N <C-w><C-w>
 "no T <C-w><C-r>
 "no D <C-w><C-r>
-"vnoremap < <gv
-"vnoremap > >gv
