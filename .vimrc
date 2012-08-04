@@ -21,7 +21,6 @@ en
 let VimSetting_etc = VimSetting_Path . "/etc"
 exec ":so " . VimSetting_Path . "/Functions.vim"
 
-exec ":so " . VimSetting_Path . "/neo_com_setting.vim"
 au FileType python exec ":so " . VimSetting_Path . "/ftplugin/MyPython.vim"
 au FileType ruby exec ":so " . VimSetting_Path . "/ftplugin/ruby-macros.vim"
 au FileType ruby exec ":so " . VimSetting_Path . "/ftplugin/MyRuby.vim"
@@ -33,7 +32,6 @@ au FileType autohotkey exec ":so " . VimSetting_Path . "/ftplugin/MyAutoHotKey.v
 if filereadable("workspace.vim")
     so workspace.vim
 en
-
 
 " 不知道哪来的
 set tags+=tags;
@@ -69,17 +67,8 @@ set scrolloff=3
 "always display status line
 set laststatus=2
 
-"make s/ / act as s/ / /g
+"make s/blabla/plapla act as s/blabla/plapla/g
 set gdefault
-
-let g:EasyMotion_leader_key = "'"
-
-""""""""""""""""""""""""""""""
-" netrw setting
-let g:netrw_winsize = 20
-
-""""""""""""""""""""""""""""""
-
 
 if has('cmdline_info')
     set ruler " show the ruler
@@ -88,15 +77,19 @@ if has('cmdline_info')
     " selected characters/lines in visual mode
 endif
 
-au FileType xhtml,xml,eruby ru ftplugin/html/autoclosetag.vim
+"au FileType xhtml,xml,eruby ru ftplugin/html/autoclosetag.vim
 
-""""""""""""""""""""" Load Settings in etc """"""""""""""""""""""""""
+""""""""""""""" Load plugin settings in .vim/etc """"""""""""""""""""
 
-for f in split(glob(VimSetting_etc . "/*.vim"), '\n')
-    exe 'source ' f
+for i in split('1,2,3,4,5', ',')
+    let load_setting_name = "/S" . i . "*.vim"
+    " plugin settings in .vim/etc should use a S[1-5] prefix as 'runlevel'
+    for f in split(glob(VimSetting_etc . load_setting_name), '\n')
+	exe 'source ' f
+    endfor
 endfor
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 hi Normal ctermfg=253
 hi Comment ctermfg=244
