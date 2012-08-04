@@ -18,3 +18,5 @@ au FileType ruby,eruby let g:rubycomplete_rails = 1
 "let OmniC_GlobalScopeSearch=1
 "let OmniC_DisplayMode=1
 "let OmniC_DefaultNamespaces=["std"]
+"ino <F1> <C-X><C-O>
+"ino <F3> <C-X><C-N>

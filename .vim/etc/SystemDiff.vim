@@ -16,20 +16,17 @@ if MySys() == 'linux'
     set notimeout          " 映射时不检查超时
     set ttimeout           " 终端键码检查超时
     set timeoutlen=360     " 超时为 100 毫秒
-    hi StatusLine cterm=reverse ctermfg=4
-    hi StatusLineNC cterm=underline,bold ctermfg=2
-    hi CursorColumn cterm=NONE ctermbg=8
-    hi CursorLine cterm=NONE ctermbg=8
+    "set ttimeoutlen=10
+
     "hi Search ctermbg=12 ctermfg=6
-    set langmenu=zh_CN.UTF-8
-    source $VIMRUNTIME/delmenu.vim
-    source $VIMRUNTIME/menu.vim
-    language messages zh_CN.utf-8
+    "set langmenu=zh_CN.UTF-8
+    "source $VIMRUNTIME/delmenu.vim
+    "source $VIMRUNTIME/menu.vim
+    "language messages zh_CN.utf-8
     if match($TERM, "screen")!=-1
 	set term=xterm
     en
-    set t_Co=16
-    "set ttimeoutlen=10
+    set t_Co=256
 elseif MySys() == 'windows'
     set diffexpr=MyDiff()
     so $VIMRUNTIME/mswin.vim
