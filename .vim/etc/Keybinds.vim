@@ -1,3 +1,8 @@
+"Set mapleader
+let mapleader = ";"
+
+"""""""""""for disable hight light""""""""""""
+noremap <silent> <leader><space> :silent noh<CR>
 nm <silent> <leader>fe :Sexplore!<cr> 
 map<Up>   gk
 map<Down> gj
