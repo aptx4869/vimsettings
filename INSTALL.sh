@@ -26,6 +26,12 @@ then
 		echo "\033[0;33mYou already have vimsettings installed.\033[0m You'll need to remove ~/.vimsettings if you want to reinstall"
 		exit
 	fi
+else
+	echo "\033[0;34mCloning vim settings...\033[0m"
+	hash git >/dev/null && /usr/bin/env git clone git://github.com/aptx4869/vimsettings.git ~/.vimsettings || {
+	echo "git not installed"
+	exit
+	}
 fi	
 
 cd ~/.vimsettings
