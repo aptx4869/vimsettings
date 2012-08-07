@@ -10,6 +10,7 @@
 [submodule ".vim/bundle/XPTemplate"]
 	path = .vim/bundle/XPTemplate
 	url = git://github.com/drmingdrmer/xptemplate.git
+	ignore=dirty
 [submodule ".vim/bundle/NERD_tree"]
 	path = .vim/bundle/NERD_tree
 	url = git://github.com/vim-scripts/The-NERD-tree.git
@@ -79,3 +80,13 @@
 [submodule ".vim/bundle/vim-javascript"]
 	path = .vim/bundle/vim-javascript
 	url = git://github.com/pangloss/vim-javascript.git
+[submodule ".vim/bundle/ctrlp"]
+	path = .vim/bundle/ctrlp
+	url = git://github.com/kien/ctrlp.vim.git
+[submodule ".vim/bundle/solarized"]
+	path = .vim/bundle/solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule ".vim/bundle/vimcdoc"]
+	path = .vim/bundle/vimcdoc
+	url = git://github.com/ahao/vimcdoc.git
+	ignore=dirty
