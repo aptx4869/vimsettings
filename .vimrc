@@ -19,12 +19,12 @@ el
     let VimSetting_Path = $HOME . "/.vim"
 en
 let VimSetting_etc = VimSetting_Path . "/etc"
-exec ":so " . VimSetting_Path . "/Functions.vim"
-
-au FileType python exec ":so " . VimSetting_Path . "/ftplugin/MyPython.vim"
-au FileType ruby exec ":so " . VimSetting_Path . "/ftplugin/ruby-macros.vim"
-au FileType ruby exec ":so " . VimSetting_Path . "/ftplugin/MyRuby.vim"
-au FileType autohotkey exec ":so " . VimSetting_Path . "/ftplugin/MyAutoHotKey.vim"
+exec ":so ".VimSetting_Path."/"."Functions.vim"
+au BufRead *vimrc exec ":set path+=".VimSetting_Path
+au FileType python exec ":so ".VimSetting_Path."/"."ftplugin/MyPython.vim"
+au FileType ruby exec ":so ".VimSetting_Path."/"."ftplugin/ruby-macros.vim"
+au FileType ruby exec ":so ".VimSetting_Path."/"."ftplugin/MyRuby.vim"
+au FileType autohotkey exec ":so ".VimSetting_Path."/"."ftplugin/MyAutoHotKey.vim"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -81,10 +81,10 @@ endif
 
 """"""""""""""" Load plugin settings in .vim/etc """"""""""""""""""""
 
-for i in split('1,2,3,4,5', ',')
-    let load_setting_name = "/S" . i . "*.vim"
-    " plugin settings in .vim/etc should use a S[1-5] prefix as 'runlevel'
-    for f in split(glob(VimSetting_etc . load_setting_name), '\n')
+for i in range(10)
+    let load_setting_name = "/S".i."*.vim"
+    " plugin settings in .vim/etc should use a S[0-10] prefix as 'runlevel'
+    for f in split(glob(VimSetting_etc.load_setting_name), '\n')
 	exe 'source ' f
     endfor
 endfor
