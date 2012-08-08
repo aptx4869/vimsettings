@@ -1,4 +1,3 @@
-	ignore=dirty
 [submodule ".vim/bundle/vim-less"]
 	path = .vim/bundle/vim-less
 	url = https://github.com/groenewege/vim-less.git
@@ -118,3 +117,6 @@
 [submodule ".vim/bundle/vimcdoc"]
 	path = .vim/bundle/vimcdoc
 	url = git://github.com/ahao/vimcdoc.git
+[submodule ".vim/bundle/calendar"]
+	path = .vim/bundle/calendar
+	url = git://github.com/vim-scripts/calendar.vim--Matsumoto.git
