@@ -120,3 +120,18 @@
 [submodule ".vim/bundle/calendar"]
 	path = .vim/bundle/calendar
 	url = git://github.com/vim-scripts/calendar.vim--Matsumoto.git
+[submodule ".vim/vimcn/NERD_commenter"]
+	path = .vim/vimcn/NERD_commenter
+	url = git://github.com/vimcn/NERD_commenter.git
+[submodule ".vim/vimcn/neocompletecache"]
+	path = .vim/vimcn/neocompletecache
+	url = git://github.com/vimcn/neocompletecache.git
+[submodule ".vim/vimcn/vimwiki"]
+	path = .vim/vimcn/vimwiki
+	url = git://github.com/vimcn/vimwiki.vim.git
+[submodule ".vim/vimcn/matchit"]
+	path = .vim/vimcn/matchit
+	url = git://github.com/vimcn/matchit.vim.git
+[submodule ".vim/vimcn/NERD_tree"]
+	path = .vim/vimcn/NERD_tree
+	url = git://github.com/vimcn/NERD_tree.vim.git
