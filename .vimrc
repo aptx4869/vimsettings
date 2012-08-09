@@ -1,6 +1,7 @@
 set nocompatible
 "call pathogen#runtime_append_all_bundles()
 call pathogen#infect()
+call pathogen#infect('vimcn')
 so $VIMRUNTIME/vimrc_example.vim
 set history=500
 set nobackup
@@ -14,9 +15,9 @@ filetype indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("win32")
-    let VimSetting_Path = $HOME . "/vimfiles"
+    let VimSetting_Path = $HOME."/"."vimfiles"
 el
-    let VimSetting_Path = $HOME . "/.vim"
+    let VimSetting_Path = $HOME."/".".vim"
 en
 let VimSetting_etc = VimSetting_Path . "/etc"
 exec ":so ".VimSetting_Path."/"."Functions.vim"
@@ -83,7 +84,7 @@ endif
 
 for i in range(10)
     let load_setting_name = "/S".i."*.vim"
-    " plugin settings in .vim/etc should use a S[0-10] prefix as 'runlevel'
+    " plugin settings in .vim/etc should use a S[0-9] prefix as 'runlevel'
     for f in split(glob(VimSetting_etc.load_setting_name), '\n')
 	exe 'source ' f
     endfor
