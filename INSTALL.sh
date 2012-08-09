@@ -40,8 +40,8 @@ fi
 echo "\033[0;34mLooking for existing configs...\033[0m"
 
 for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do
-	if [[ ( -e $i ) || ( -h $i ) ]]; then
-		echo "\033[0;33mFound ${i}.\033[0m \033[0;32]Backing up to ${i}.back_up\033[0m";
+	if [ -e $i ] || [ -h $i ]; then
+		echo "\033[0;33mFound ${i}\033[0m \033[0;32]Backing up to ${i}.back_up\033[0m";
 		mv "${i}" "${i}.back_up"
 	fi
 done
@@ -49,5 +49,6 @@ done
 echo "\033[0;34mLink vim configuration files...\033[0m"
 VIMSETS="$HOME/.vimsettings"
 for i in .vim .vimrc .gvimrc; do
-	ln -s "${VIMSETS}/${i}" "~/${i}"
+	echo "\033[0;33mLinking ${i}\033[0m \033[0;32] from ${HOME}/${i}\033[0m";
+	ln -s "${VIMSETS}/${i}" "$HOME/${i}"
 done
