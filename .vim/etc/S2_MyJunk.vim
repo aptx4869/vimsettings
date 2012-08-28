@@ -16,5 +16,6 @@ au BufNewFile,BufRead bom*.csva :%s/\v^(\d{10},).*,(\d+((\.\d+)|(\s*\/\s*\d+))?)
 au BufNewFile,BufRead *.reply set encoding=gbk
 au BufNewFile,BufRead *.reply imap ( ( )<Left>
 au BufNewFile,BufRead *.reply set fileencoding=utf-8
+au BufNewFile,BufRead .pentadactylrc set foldmarker={,} foldlevel=0 filetype=vim
 "au BufNewFile,BufRead *.reply nmap <F2> <Esc>GA<CR>才不用什么js脚本，这是vim签名档 <Esc>ZZ
 "au BufNewFile,BufRead *.reply nmap <F3> :set encoding=utf-8

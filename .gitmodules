@@ -54,10 +54,6 @@
 	path = .vim/bundle/supertab
 	url = git://github.com/ervandew/supertab.git
 	ignore=dirty
-[submodule ".vim/bundle/echofunc"]
-	path = .vim/bundle/echofunc
-	url = git://github.com/vim-scripts/echofunc.vim.git
-	ignore=dirty
 [submodule ".vim/bundle/taglist"]
 	path = .vim/bundle/taglist
 	url = git://github.com/vim-scripts/taglist.vim.git
@@ -141,4 +137,24 @@
 [submodule ".vim/vimcn/NERD_tree"]
 	path = .vim/vimcn/NERD_tree
 	url = git://github.com/vimcn/NERD_tree.vim.git
+	ignore=dirty
+[submodule ".vim/bundle/vim-ruby"]
+	path = .vim/bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+	ignore=dirty
+[submodule ".vim/bundle/tabular"]
+	path = .vim/bundle/tabular
+	url = git://github.com/godlygeek/tabular.git
+	ignore=dirty
+[submodule ".vim/bundle/auto_mkdir"]
+	path = .vim/bundle/auto_mkdir
+	url = git://github.com/vim-scripts/auto_mkdir.git
+	ignore=dirty
+[submodule ".vim/bundle/ack"]
+	path = .vim/bundle/ack
+	url = git://github.com/mileszs/ack.vim.git
+	ignore=dirty
+[submodule ".vim/linux/echofunc"]
+	path = .vim/linux/echofunc
+	url = git://github.com/vim-scripts/echofunc.vim.git
 	ignore=dirty

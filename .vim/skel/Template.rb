@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env ruby
 #-*-encoding:utf-8-*-
 
 #-------------------------------------------------
@@ -8,13 +8,3 @@
 #     File: <T_FILENAME>
 #     Create Date: <T_CREATE_DATE>
 #-------------------------------------------------
-
-import cProfile
-#from debuger import *
-
-
-
-
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod()

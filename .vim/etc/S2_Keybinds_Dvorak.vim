@@ -1,6 +1,9 @@
 "Set mapleader
 let mapleader = ";"
 
+map , <AwesomestLeaderEver>
+map <AwesomestLeaderEver>k :hello
+
 """""""""""for disable hight light""""""""""""
 noremap <silent> <leader><space> :silent noh<CR>
 
@@ -41,14 +44,15 @@ ino <F3> <C-X><C-N>
 
 cno $s submatch()<Left>
 
-no <C-F> :find<space>
+"no <C-F> :find<space>
 
 nm <leader>a "ayyj@a
 nm <leader>s :%!sort 
 " 一键看糗百
 nm <leader>q :QB<CR>
 " quick add utf8 file header
-nm <leader>utf mlggO#-*-encoding:utf-8-*-<Esc>`l
+"nm <leader>utf mlggO#-*-encoding:utf-8-*-<Esc>`l
+nm <leader>utf ml:if strpart(getline(1), 0, 21)  != '#-*-encoding:utf-8-*-'<CR>0put ='#-*-encoding:utf-8-*-'<CR>put =''<CR>endif<CR>:if getline(3)  !=  ""<CR>1put =''<CR>endif<CR><Space>`l
 
 "html formatting
 no <leader>htm :%s#\v(\<[^</]*/[^</]*\>)#\1\r<Cr>:%s#\(<%\)#\r\1<Cr>:%s#\(%>\)#\1\r<Cr>gg=G:g/^\s*$/d<Cr>
@@ -72,11 +76,14 @@ no <S-F6> lbvey:'a,'bs/<C-R>//<C-R>0
 no [29~ lbvey:'a,'bs/<C-R>//<C-R>0
 
 nm <F7> :'a,'bw! Lib/file
+nm <S-F7> :'a,'bs/\v:(\w+) \=\>/\1:
+nm [31~ :'a,'bs/\v:(\w+) \=\>/\1:
 nm <F8> :TlistToggle<CR>
 nm <S-F8> :NERDTreeToggle<CR>
 "for linux term
 nm [32~ :NERDTreeToggle<CR>
 nm <F11> :!ctags -R
+au FileType ruby nm <F11> :!ctags -R --exclude=.git --exclude=log * /home/aptx4869/.rvm/gems/ruby-1.9.3-p194/gems/*
 nm <C-F11> :source lastsession.vim<CR>
 nm <C-F12> :mksession lastsession.vim
 

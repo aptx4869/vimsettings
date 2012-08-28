@@ -1,10 +1,8 @@
-
+= <T_CREATE_DATE> =
 == To do ==
 * [ ] this a template
 * [ ] [[line2]]
    - [ ] [[css]]
    - [ ] [[html]]
-   - [ ] [[rails]]
-* [ ] make a long time plan
-* [ ] update ~/script/base_project.sh
-* [X] update ~/.vim/skel/Template.sh
+
+== [[dictionary]] ==

@@ -16,8 +16,10 @@ filetype indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("win32")
     let VimSetting_Path = $HOME."/"."vimfiles"
+    call pathogen#infect('windows')
 el
     let VimSetting_Path = $HOME."/".".vim"
+    call pathogen#infect('linux')
 en
 let VimSetting_etc = VimSetting_Path . "/etc"
 exec ":so ".VimSetting_Path."/"."Functions.vim"
@@ -90,6 +92,27 @@ for i in range(10)
     endfor
 endfor
 
+
+"etc/Disable_javaScriptLint.vim
+"etc/S1_EasyMotion.vim
+"etc/S1_neo_com_setting.vim
+"etc/S1_netrw.vim
+"etc/S2_Ack_vim.vim
+"etc/S2_Color_Solarized.vim
+"etc/S2_google_tarnslator.vim
+"etc/S2_Keybinds_Dvorak.vim
+"etc/S2_LaTeX_Suit.vim
+"etc/S2_MyJunk.vim
+"etc/S2_omnicomplete.vim
+"etc/S2_Pmenu_color.vim
+"etc/S2_SuperTab.vim
+"etc/S2_SystemDiff.vim
+"etc/S2_TagList.vim
+"etc/S2_template_loader.vim
+"etc/S2_vim-powerline.vim
+"etc/S2_XPTemplate.vim
+"etc/S3_VimWiki.vim
+"etc/S4_rubycomplete.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 hi Normal ctermfg=253
