@@ -60,7 +60,9 @@ elseif MySys() == 'windows'
     " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
     " can be called correctly.
     set shellslash
+    set enc=utf-8
     language messages zh_CN.GBK
-    set enc=chinese
+    "language message zh_CN.UTF-8
+
 en
 
