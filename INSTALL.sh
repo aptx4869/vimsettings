@@ -21,7 +21,7 @@ then
 		mv ~/.vimsettings ~/.vimsettings.back_up;
 
 		echo "\033[0;34mCloning vim settings...\033[0m"
-		hash git >/dev/null && /usr/bin/env git clone --recursive git://github.com/aptx4869/vimsettings.git ~/.vimsettings || {
+		hash git >/dev/null && /usr/bin/env git clone --depth 1 --recursive git://github.com/aptx4869/vimsettings.git ~/.vimsettings || {
 		echo "git not installed"
 		exit
 		}
@@ -31,7 +31,7 @@ then
 	fi
 else
 	echo "\033[0;34mCloning vim settings...\033[0m"
-	hash git >/dev/null && /usr/bin/env git clone --recursive git://github.com/aptx4869/vimsettings.git ~/.vimsettings || {
+	hash git >/dev/null && /usr/bin/env git clone --depth 1 --recursive git://github.com/aptx4869/vimsettings.git ~/.vimsettings || {
 	echo "git not installed"
 	exit
 	}
