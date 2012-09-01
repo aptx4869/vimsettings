@@ -1,4 +1,4 @@
-"from https://github.com/yuest/vimsettings/blob/master/.vimrc 
+"mostly from https://github.com/yuest/vimsettings/blob/master/.vimrc 
 let g:vimwiki_hl_headers=1
 let g:vimwiki_folding=1
 let g:vimwiki_CJK_length=1
@@ -7,11 +7,20 @@ let g:vimwiki_menu = ''
 let g:vimwiki_badsyms = ' '
 let g:vimwiki_browsers = ['firefox']
 let wiki1 = {}
-let wiki1.path = $HOME."/Dropbox/vimwiki/think"
+
+if MySys() == 'linux'
+    let s:wiki_path = $HOME."/Dropbox/vimwiki"
+elseif MySys() == 'windows'
+    let s:wiki_path = "D:/My Documents/Dropbox/vimwiki"
+en
+
+let wiki1.path = s:wiki_path."/think"
+
 let wiki1.nested_syntaxes = {'ruby':'ruby','py': 'python', 'js': 'javascript', 'html': 'html', 'css': 'css', 'bash': 'sh'}
 "let wiki1.syntax = 'markdown'
 let wiki2 = {}
-let wiki2.path = $HOME."/Dropbox/vimwiki/note"
+let wiki2.path = s:wiki_path."/note"
+"let wiki2.path = $HOME."/Dropbox/vimwiki/note"
 let wiki2.nested_syntaxes = {'py': 'python', 'js': 'javascript', 'html': 'html', 'css': 'css', 'bash': 'sh'}
 let wiki2.auto_export = 1
 let wiki2.html_header = $HOME."/Dropbox/vimwiki/note/header.tpl"

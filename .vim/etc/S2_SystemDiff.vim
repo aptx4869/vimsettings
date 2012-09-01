@@ -61,8 +61,7 @@ elseif MySys() == 'windows'
     " can be called correctly.
     set shellslash
     set enc=utf-8
-    language messages zh_CN.GBK
-    "language message zh_CN.UTF-8
-
+    "language messages zh_CN.GBK
+    language message zh_CN.UTF-8
 en
 

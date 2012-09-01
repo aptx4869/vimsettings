@@ -4,7 +4,7 @@
 "let g:SuperTabDefaultCompletionType="<C-X><C-N>" 
 ""au FileType python let g:SuperTabDefaultCompletionType="<C-X><C-O>" 
 "let g:pcs_hotkey="<leader>pc"
-au FileType ruby,eruby let g:SuperTabDefaultCompletionType="<C-X><C-U>" 
+au FileType ruby,eruby let g:SuperTabDefaultCompletionType="<C-X><C-U>"
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabRetainCompletionType=1
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"

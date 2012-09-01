@@ -1,14 +1,17 @@
 "Set mapleader
 let mapleader = ";"
 
-map , <AwesomestLeaderEver>
-map <AwesomestLeaderEver>k :hello
+"in fact you can call it anything
+"map , <AwesomestLeaderEver>
+"map <AwesomestLeaderEver>k :hello
 
 """""""""""for disable hight light""""""""""""
 noremap <silent> <leader><space> :silent noh<CR>
 
+
 nm <silent> <leader>fe :Sexplore!<cr> 
 
+" Move cursor by display lines when wrapping 
 map <Up>   gk
 map <Down> gj
 
@@ -30,9 +33,9 @@ no! l <Right>
 "just get rid of this junk of vim-latex
 "ino <SID>ou,. <Plug>IMAP_JumpForward
 
-" Insert Befor current line in insert mode
+" Insert &Befor current line in insert mode
 ino <C-B> <Esc>^i
-" Append at the End of current line in insert mode
+" Append at the &End of current line in insert mode
 ino <C-E> <Esc>$a
 " add a new line in insert mode 
 ino <S-CR> <Esc>o
@@ -50,9 +53,10 @@ nm <leader>a "ayyj@a
 nm <leader>s :%!sort 
 " 一键看糗百
 nm <leader>q :QB<CR>
+
 " quick add utf8 file header
 "nm <leader>utf mlggO#-*-encoding:utf-8-*-<Esc>`l
-nm <leader>utf ml:if strpart(getline(1), 0, 21)  != '#-*-encoding:utf-8-*-'<CR>0put ='#-*-encoding:utf-8-*-'<CR>put =''<CR>endif<CR>:if getline(3)  !=  ""<CR>1put =''<CR>endif<CR><Space>`l
+nm <leader>u ml:if strpart(getline(1), 0, 21)  != '#-*-encoding:utf-8-*-'<CR>0put ='#-*-encoding:utf-8-*-'<CR>put =''<CR>endif<CR>:if getline(3)  !=  ""<CR>1put =''<CR>endif<CR><Space>`l
 
 "html formatting
 no <leader>htm :%s#\v(\<[^</]*/[^</]*\>)#\1\r<Cr>:%s#\(<%\)#\r\1<Cr>:%s#\(%>\)#\1\r<Cr>gg=G:g/^\s*$/d<Cr>

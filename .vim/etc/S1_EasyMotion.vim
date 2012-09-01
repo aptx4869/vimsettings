@@ -1,2 +1,2 @@
 " easy-motion
-let g:EasyMotion_leader_key = "'"  
+let g:EasyMotion_leader_key = "'"
