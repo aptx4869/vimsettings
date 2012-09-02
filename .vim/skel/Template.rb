@@ -8,3 +8,13 @@
 #     File: <T_FILENAME>
 #     Create Date: <T_CREATE_DATE>
 #-------------------------------------------------
+
+require 'optparse'
+
+options = {}
+OptionParser.new do |opts|
+	opts.banner = "Usage: #{File.basename(__FILE__)} [options]"
+  opts.on('-l Locale', '--locale Locale', 'Use the specify language') do |locale|
+    options[:locale] = locale
+  end
+end.parse!
