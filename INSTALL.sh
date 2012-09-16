@@ -3,7 +3,7 @@
 #-------------------------------------------------
 #     Author: aptx4869 <ling548@gmail.com>
 #     https://github.com/aptx4869
-#
+#  
 #     File: INSTALL.sh
 #     Create Date: 2012-08-07 10:31:38
 #     Fork from :
@@ -37,7 +37,7 @@ else
 	echo "git not installed"
 	exit
 	}
-fi
+fi	
 
 echo "\033[0;34mLooking for existing configs...\033[0m"
 

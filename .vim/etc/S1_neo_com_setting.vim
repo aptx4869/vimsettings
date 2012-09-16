@@ -17,13 +17,9 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'default' : '',
     \ 'vimshell' : $HOME.'/.vimshell_hist',
     \ 'scheme' : $HOME.'/.gosh_completions',
-    \ 'javascript' : $HOME.'/.vim/dict/js-jquery.dict',
     \ 'ruby' : $HOME.'/.vim/dict/ruby-china.dict',
     \ 'text' : $HOME.'/.vim/dict/english.dict'
     \ }
-
-    "\ 'javascript' : $HOME.'/.vim/dict/js-jquery.dict',
-
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')

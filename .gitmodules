@@ -165,21 +165,3 @@
 [submodule ".vim/bundle/vim-coffee-script"]
 	path = .vim/bundle/vim-coffee-script
 	url = git://github.com/kchmck/vim-coffee-script.git
-[submodule ".vim/bundle/vim-jquery"]
-	path = .vim/bundle/vim-jquery
-	url = git://github.com/itspriddle/vim-jquery.git
-[submodule ".vim/bundle/trailing-whitespace"]
-	path = .vim/bundle/trailing-whitespace
-	url = git://github.com/bronson/vim-trailing-whitespace.git
-;[submodule ".vim/bundle/vim-snipmate"]
-	;path = .vim/bundle/vim-snipmate
-	;url = git://github.com/garbas/vim-snipmate.git
-;[submodule ".vim/bundle/snipmate-snippets"]
-	;path = .vim/bundle/snipmate-snippets
-	;url = git://github.com/spf13/snipmate-snippets.git
-;[submodule ".vim/bundle/vim-addon-mw-utils"]
-	;path = .vim/bundle/vim-addon-mw-utils
-	;url = git://github.com/MarcWeber/vim-addon-mw-utils.git
-;[submodule ".vim/bundle/tlib_vim"]
-	;path = .vim/bundle/tlib_vim
-	;url = git://github.com/tomtom/tlib_vim.git

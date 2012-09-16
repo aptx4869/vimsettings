@@ -31,14 +31,16 @@ au FileType autohotkey exec ":so ".VimSetting_Path."/"."ftplugin/MyAutoHotKey.vi
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" execute project related configuration in current directory
+if filereadable("workspace.vim")
+    so workspace.vim
+en
 
 " 不知道哪来的
 set tags+=tags;
 " 回行显示
 set wrap
 set nolinebreak
-set textwidth=80
-set formatoptions+=Mm
 
 """"""""""""""""""" Auto detect file encoding """""""""""""""""""""""
 set encoding=utf-8
@@ -54,7 +56,7 @@ set foldmethod=syntax
 set foldlevel=100
 
 "实现C程序的缩进
-set cin
+set cin   
 set sw=4
 set number
 set smartindent
@@ -63,7 +65,7 @@ behave xterm
 "高亮所在行、列
 set cursorline
 set cursorcolumn
-set scrolloff=3
+set scrolloff=3 
 
 "always display status line
 set laststatus=2
@@ -90,6 +92,7 @@ for i in range(10)
     endfor
 endfor
 
+
 "etc/Disable_javaScriptLint.vim
 "etc/S1_EasyMotion.vim
 "etc/S1_neo_com_setting.vim
@@ -113,16 +116,6 @@ endfor
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 hi Normal ctermfg=253
-hi Comment ctermfg=248
-set title  titlestring=%<%F%=%l/%L-%P titlelen=70
-
+hi Comment ctermfg=244
 set showcmd		" display incomplete commands
-
-" execute project related configuration in current directory
-if filereadable("workspace.vim")
-    so workspace.vim
-en
-
-"autocmd InsertLeave * if &diff == 1 | diffupdate | endif
-"set diffopt+=context:8
 "set verbose=9   " for debug

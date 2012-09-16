@@ -1,4 +1,4 @@
-"mostly from https://github.com/yuest/vimsettings/blob/master/.vimrc
+"mostly from https://github.com/yuest/vimsettings/blob/master/.vimrc 
 let g:vimwiki_hl_headers=1
 let g:vimwiki_folding=1
 let g:vimwiki_CJK_length=1
@@ -26,7 +26,7 @@ let wiki2.auto_export = 1
 let wiki2.html_header = $HOME."/Dropbox/vimwiki/note/header.tpl"
 let wiki2.html_footer = $HOME."/Dropbox/vimwiki/note/footer.tpl"
 let g:vimwiki_list = [wiki1, wiki2]
-"nm <silent> <leader>fe :Sexplore!<cr>
+"nm <silent> <leader>fe :Sexplore!<cr> 
 
 
 "let g:vimwiki_diary_months = {
