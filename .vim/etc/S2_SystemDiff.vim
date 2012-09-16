@@ -9,7 +9,8 @@ if MySys() == 'linux'
     au FileType ruby nmap <F12> :!ruby %
     au FileType tex nmap <F12> :!pdflatex %
     au FileType sh nmap <F12> :!bash %
-    set guifont=Arial\ monospaced\ for\ SAP\ 14
+    "set guifont=Arial\ monospaced\ for\ SAP\ 14
+    set guifont=Arial\ monospaced\ for\ SAP\ for\ Powerline\ 14
     set gfw=文泉驿等宽微米黑\ 14
     nmap <S-F2> :w !sudo tee %
     nmap [24~ :w !sudo tee %
