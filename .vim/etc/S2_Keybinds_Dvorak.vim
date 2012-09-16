@@ -9,9 +9,9 @@ let mapleader = ";"
 noremap <silent> <leader><space> :silent noh<CR>
 
 
-nm <silent> <leader>fe :Sexplore!<cr> 
+nm <silent> <leader>fe :Sexplore!<cr>
 
-" Move cursor by display lines when wrapping 
+" Move cursor by display lines when wrapping
 map <Up>   gk
 map <Down> gj
 
@@ -37,7 +37,7 @@ no! l <Right>
 ino <C-B> <Esc>^i
 " Append at the &End of current line in insert mode
 ino <C-E> <Esc>$a
-" add a new line in insert mode 
+" add a new line in insert mode
 ino <S-CR> <Esc>o
 ino <C-O> <Esc>o
 
@@ -45,12 +45,16 @@ ino <C-O> <Esc>o
 ino <F1> <C-X><C-O>
 ino <F3> <C-X><C-N>
 
+vno <Tab> >gv
+vno <S-Tab> <gv
+
 cno $s submatch()<Left>
+cno %% <C-R>=expand('%:h').'/'<cr>
 
 "no <C-F> :find<space>
 
 nm <leader>a "ayyj@a
-nm <leader>s :%!sort 
+nm <leader>s :%!sort
 " 一键看糗百
 nm <leader>q :QB<CR>
 
@@ -86,8 +90,10 @@ nm <F8> :TlistToggle<CR>
 nm <S-F8> :NERDTreeToggle<CR>
 "for linux term
 nm [32~ :NERDTreeToggle<CR>
-nm <F11> :!ctags -R
-au FileType ruby nm <F11> :!ctags -R --exclude=.git --exclude=log * /home/aptx4869/.rvm/gems/ruby-1.9.3-p194/gems/*
+nm <F11> :!ctags -R --fields=+lS
+
+au FileType ruby nm <F11> :!ctags -R --fields=+lS --exclude=.git --exclude=log * /home/aptx4869/.rvm/gems/ruby-1.9.3-p194/gems/*
+
 nm <C-F11> :source lastsession.vim<CR>
 nm <C-F12> :mksession lastsession.vim
 
@@ -104,7 +110,8 @@ im <C-Del> <esc>vexi
 nnoremap / /\v
 cno %s %s/\v
 no \ :
-no <leader>y "+y
+vno <leader>y "+y
+vno <C-C> "+y
 "no S :
 no _ $
 no - ^

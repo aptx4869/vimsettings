@@ -1,8 +1,8 @@
 " SuperTab 设置
 "set completeopt=longest,menu
-"let g:SuperTabRetainCompletionType=2 
-"let g:SuperTabDefaultCompletionType="<C-X><C-N>" 
-""au FileType python let g:SuperTabDefaultCompletionType="<C-X><C-O>" 
+"let g:SuperTabRetainCompletionType=2
+"let g:SuperTabDefaultCompletionType="<C-X><C-N>"
+""au FileType python let g:SuperTabDefaultCompletionType="<C-X><C-O>"
 "let g:pcs_hotkey="<leader>pc"
 au FileType ruby,eruby let g:SuperTabDefaultCompletionType="<C-X><C-U>"
 let g:SuperTabDefaultCompletionType = "context"
