@@ -7,3 +7,4 @@ nn <leader>gr :Gread<cr>
 nn <leader>gm :Gmove <C-R>=expand('%:h').'/'<cr>
 nn <leader>gb :Gblame<cr>
 nn <leader>gl :Gbrows<cr>
+nn <leader>gg :Git<space>
