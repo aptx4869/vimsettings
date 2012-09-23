@@ -6,6 +6,7 @@ so $VIMRUNTIME/vimrc_example.vim
 set history=500
 set nobackup
 set autoread
+set fcs=fold:\ ,vert:\|
 
 " 帮助文档
 set helplang=cn
@@ -91,11 +92,13 @@ for i in range(10)
 endfor
 
 "etc/Disable_javaScriptLint.vim
+"etc/S1_Urxvt_fixbinding.vim
 "etc/S1_EasyMotion.vim
 "etc/S1_neo_com_setting.vim
 "etc/S1_netrw.vim
 "etc/S2_Ack_vim.vim
 "etc/S2_Color_Solarized.vim
+"etc/S2_Fugitive.vim
 "etc/S2_google_tarnslator.vim
 "etc/S2_Keybinds_Dvorak.vim
 "etc/S2_LaTeX_Suit.vim
@@ -106,6 +109,7 @@ endfor
 "etc/S2_SystemDiff.vim
 "etc/S2_TagList.vim
 "etc/S2_template_loader.vim
+"etc/S2_Tabulazire.vim
 "etc/S2_vim-powerline.vim
 "etc/S2_XPTemplate.vim
 "etc/S3_VimWiki.vim
@@ -126,3 +130,4 @@ en
 "autocmd InsertLeave * if &diff == 1 | diffupdate | endif
 "set diffopt+=context:8
 "set verbose=9   " for debug
+"set wd=500
