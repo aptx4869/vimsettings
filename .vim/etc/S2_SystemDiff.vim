@@ -9,6 +9,7 @@ if MySys() == 'linux'
     au FileType ruby nmap <F12> :!ruby %
     au FileType tex nmap <F12> :!pdflatex %
     au FileType sh nmap <F12> :!bash %
+    au BufNewFile,BufRead .Xresources nmap <F12> :!xrdb %
     "set guifont=Arial\ monospaced\ for\ SAP\ 14
     set guifont=Arial\ monospaced\ for\ SAP\ for\ Powerline\ 14
     set gfw=文泉驿等宽微米黑\ 14
