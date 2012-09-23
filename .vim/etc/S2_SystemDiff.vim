@@ -6,15 +6,14 @@ if MySys() == 'linux'
     "When .vimrc is edited, reload it
     au! bufwritepost .vimrc so ~/.vimrc
     au FileType python nmap <F12> :!python %
-    au FileType ruby nmap <F12> :!ruby %
-    au FileType tex nmap <F12> :!pdflatex %
-    au FileType sh nmap <F12> :!bash %
+    au FileType ruby   nmap <F12> :!ruby %
+    au FileType tex    nmap <F12> :!pdflatex %
+    au FileType sh     nmap <F12> :!bash %
     au BufNewFile,BufRead .Xresources nmap <F12> :!xrdb %
     "set guifont=Arial\ monospaced\ for\ SAP\ 14
     set guifont=Arial\ monospaced\ for\ SAP\ for\ Powerline\ 14
     set gfw=文泉驿等宽微米黑\ 14
     nmap <S-F2> :w !sudo tee %
-    nmap [24~ :w !sudo tee %
     let g:template_path = $HOME . "/.vim/skel"
     set notimeout          " 映射时不检查超时
     set ttimeout           " 终端键码检查超时
@@ -51,9 +50,9 @@ elseif MySys() == 'windows'
     "When _vimrc is edited, reload it
     au! bufwritepost _vimrc so $vim/_vimrc
 
-    au FileType python nmap <F12> :!python.exe %
-    au FileType tex nmap <F12> :!pdflatex.exe %
-    au FileType ruby nmap <F12> :!C:\RailsInstaller\Ruby1.9.3\bin\ruby.exe %
+    au FileType python     nmap <F12> :!python.exe %
+    au FileType tex        nmap <F12> :!pdflatex.exe %
+    au FileType ruby       nmap <F12> :!C:\RailsInstaller\Ruby1.9.3\bin\ruby.exe %
     au FileType autohotkey nmap <F12> :w<Enter><Esc>:mksession! lastsession.vim<Enter>
     "set pretty fonts for coding
     set guifont=Arial_monospaced_for_SAP:h14:cANSI
