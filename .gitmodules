@@ -38,10 +38,10 @@
 	path = .vim/bundle/vim-easymotion
 	url = git://github.com/Lokaltog/vim-easymotion.git
 	ignore=dirty
-[submodule ".vim/bundle/git-vim"]
-	path = .vim/bundle/git-vim
-	url = git://github.com/motemen/git-vim.git
-	ignore=dirty
+;[submodule ".vim/bundle/git-vim"]
+	;path = .vim/bundle/git-vim
+	;url = git://github.com/motemen/git-vim.git
+	;ignore=dirty
 [submodule ".vim/bundle/neocomplcache"]
 	path = .vim/bundle/neocomplcache
 	url = git://github.com/Shougo/neocomplcache.git
@@ -165,12 +165,15 @@
 [submodule ".vim/bundle/vim-coffee-script"]
 	path = .vim/bundle/vim-coffee-script
 	url = git://github.com/kchmck/vim-coffee-script.git
+	ignore=dirty
 [submodule ".vim/bundle/vim-jquery"]
 	path = .vim/bundle/vim-jquery
 	url = git://github.com/itspriddle/vim-jquery.git
+	ignore=dirty
 [submodule ".vim/bundle/trailing-whitespace"]
 	path = .vim/bundle/trailing-whitespace
 	url = git://github.com/bronson/vim-trailing-whitespace.git
+	ignore=dirty
 ;[submodule ".vim/bundle/vim-snipmate"]
 	;path = .vim/bundle/vim-snipmate
 	;url = git://github.com/garbas/vim-snipmate.git
@@ -183,3 +186,15 @@
 ;[submodule ".vim/bundle/tlib_vim"]
 	;path = .vim/bundle/tlib_vim
 	;url = git://github.com/tomtom/tlib_vim.git
+[submodule ".vim/bundle/vim-fugitive"]
+	path = .vim/bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+	ignore=dirty
+[submodule ".vim/bundle/vim-git"]
+	path = .vim/bundle/vim-git
+	url = git://github.com/tpope/vim-git.git
+	ignore=dirty
+[submodule ".vim/bundle/YCommentReader"]
+	path = .vim/bundle/YCommentReader
+	url = git://github.com/gvirus/YCommentReader.git
+	ignore=dirty
