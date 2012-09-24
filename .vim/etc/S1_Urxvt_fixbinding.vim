@@ -16,7 +16,7 @@ set <F12> =[24~
 "}}}
 
 for i in ["", "c", "i", "x"]
-"Shift+F1-F12{{{
+"Shift/Alt + F1-F12{{{
 "" these should go into .Xresources {{{
     "URxvt*keysym.S-F1:  \033\[[23$
     "URxvt*keysym.S-F2:  \033\[[24$
@@ -30,6 +30,19 @@ for i in ["", "c", "i", "x"]
     "URxvt*keysym.S-F10: \033\[[19^
     "URxvt*keysym.S-F11: \033\[[20^
     "URxvt*keysym.S-F12: \033\[[21^
+    "
+    "URxvt*keysym.A-F1:  \033\[[23^
+    "URxvt*keysym.A-F2:  \033\[[24^
+    "URxvt*keysym.A-F3:  \033\[[25^
+    "URxvt*keysym.A-F4:  \033\[[26^
+    "URxvt*keysym.A-F5:  \033\[[28^
+    "URxvt*keysym.A-F6:  \033\[[29^
+    "URxvt*keysym.A-F7:  \033\[[31^
+    "URxvt*keysym.A-F8:  \033\[[32^
+    "URxvt*keysym.A-F9:  \033\[[33^
+    "URxvt*keysym.A-F10: \033\[[34^
+    "URxvt*keysym.A-F11: \033\[[23@
+    "URxvt*keysym.A-F12: \033\[[24@
     ""}}}
     exe i . "map [[23$ <S-F1>"
     exe i . "map [[24$ <S-F2>"
@@ -43,6 +56,19 @@ for i in ["", "c", "i", "x"]
     exe i . "map [[19^ <S-F10>"
     exe i . "map [[20^ <S-F11>"
     exe i . "map [[21^ <S-F12>"
+
+    exe i . "map [[23^ <M-F1>"
+    exe i . "map [[24^ <M-F2>"
+    exe i . "map [[25^ <M-F3>"
+    exe i . "map [[26^ <M-F4>"
+    exe i . "map [[28^ <M-F5>"
+    exe i . "map [[29^ <M-F6>"
+    exe i . "map [[31^ <M-F7>"
+    exe i . "map [[32^ <M-F8>"
+    exe i . "map [[33^ <M-F9>"
+    exe i . "map [[34^ <M-F10>"
+    exe i . "map [[23@ <M-F11>"
+    exe i . "map [[24@ <M-F12>"
 "}}}
 " Alt+ h j k l{{{
     exe i . "map h <M-h>"

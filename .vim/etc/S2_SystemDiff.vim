@@ -1,6 +1,6 @@
 if MySys() == 'linux'
     "Fast reloading of the .vimrc
-    map <silent> <leader>ss :so ~/.vimrc<cr>
+    map <silent> <leader>sv :so ~/.vimrc<cr>
     "Fast editing of .vimrc
     map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
     "When .vimrc is edited, reload it
@@ -9,11 +9,12 @@ if MySys() == 'linux'
     au FileType ruby   nmap <F12> :!ruby %
     au FileType tex    nmap <F12> :!pdflatex %
     au FileType sh     nmap <F12> :!bash %
-    au BufNewFile,BufRead .Xresources nmap <F12> :!xrdb %
+    au BufNewFile,BufRead .Xresources nmap <F12> :!xrdb %<cr>
+    au FileType tmux   nmap <F12> :!tmux source %<cr>
     "set guifont=Arial\ monospaced\ for\ SAP\ 14
     set guifont=Arial\ monospaced\ for\ SAP\ for\ Powerline\ 14
     set gfw=文泉驿等宽微米黑\ 14
-    nmap <S-F2> :w !sudo tee %
+    nmap <S-F1> :w !sudo tee %
     let g:template_path = $HOME . "/.vim/skel"
     set notimeout          " 映射时不检查超时
     set ttimeout           " 终端键码检查超时
@@ -40,7 +41,7 @@ elseif MySys() == 'windows'
     set winaltkeys=no
 
     "Fast reloading of the _vimrc
-    map <silent> <leader>ss :so $vim/_vimrc<cr>
+    map <silent> <leader>sv :so $vim/_vimrc<cr>
     "Fast editing of _vimrc with different PC
     if hostname() == "BERT-PC"
 	map <silent> <leader>ee :call SwitchToBuf("C:/Program Files (x86)/Vim/_vimrc")<cr>

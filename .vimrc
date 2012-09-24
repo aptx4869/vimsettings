@@ -40,6 +40,7 @@ set wrap
 set nolinebreak
 set textwidth=80
 set formatoptions+=Mm
+set iskeyword+=<,>,(,),[,]
 
 """"""""""""""""""" Auto detect file encoding """""""""""""""""""""""
 set encoding=utf-8
