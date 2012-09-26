@@ -40,12 +40,12 @@ func! RunCode()
         endif
 endfunc
 
-map <c-c> :call CompileCode()<CR>
+nno <c-c> :call CompileCode()<CR>
 imap <c-c> <ESC>:call CompileCode()<CR>
 vmap <c-c> <ESC>:call CompileCode()<CR>
 
 " Ctrl + R 一键保存、运行
-map <c-r> :call RunCode()<CR>
+nno <c-r> :call RunCode()<CR>
 imap <c-r> <ESC>:call RunCode()<CR>
 vmap <c-r> <ESC>:call RunCode()<CR>
 

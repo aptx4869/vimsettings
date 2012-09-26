@@ -1,6 +1,6 @@
 "  vim: set ft=vim fdm=marker fdc=3 fdl=0:
 "Set mapleader
-let mapleader = ";"
+let mapleader = ','
 
 "In fact we can call it anything
 "map , <AwesomestLeaderEver>
@@ -12,8 +12,10 @@ noremap <silent> <leader><space> :silent noh<CR>
 
 nno <silent> <leader>fe :Sexplore!<cr>
 vm  <silent> <leader>cf <Esc>`>o}}}<Esc><leader>cc`<O{{{<Esc><leader>cc^a<space>
-nno <silent> <Tab> :set nohls nois lz<cr>/\v\S+<cr>:set hls is<cr>:silent noh<CR>:set nolz<cr>
-nno <silent> <S-Tab> :set nohls nois lz<cr>?\v\S+<cr>:set hls is<cr>:silent noh<CR>:set nolz<cr>
+nno <silent> <Tab> W
+"nno <silent> <Tab> :set nohls nois lz<cr>/\v\S+<cr>:set hls is<cr>:silent noh<CR>:set nolz<cr>
+nno <silent> <S-Tab> B
+"nno <silent> <S-Tab> :set nohls nois lz<cr>?\v\S+<cr>:set hls is<cr>:silent noh<CR>:set nolz<cr>
 nno <silent> <C-Tab> :set nohls nois lz<cr>/\v\S+<cr>n:set hls is<cr>:silent noh<CR>:set nolz<cr>
 nno <silent> <C-S-Tab> :set nohls nois lz<cr>?\v\S+<cr>n:set hls is<cr>:silent noh<CR>:set nolz<cr>
 
@@ -28,6 +30,8 @@ ino <M-l> <Right>
 
 ino <Left> <C-O>b
 ino <Right> <C-O>w
+ino <Up> <C-O>B
+ino <Down> <C-O>W
 ino <C-U> <C-G>u<C-U>
 ino <C-Y> <C-O>p
 
@@ -78,6 +82,7 @@ vno   <leader>ss   :sort<cr>
 nno <leader>q :QB<CR>
 
 " quick add utf8 file header
+"nnoremap <buffer> <F1> :if strpart(getline(1),0,21) !='#!/usr/math/bin/ruby'<CR>0put ='#!/usr/math/bin/ruby'<CR>put =''<CR>endif<CR>:if getline(3) != ""<CR>1put =''<CR>endif<CR><Space>3Gi
 "nno <leader>utf mlggO#-*-encoding:utf-8-*-<Esc>`l
 nno <leader>u ml:if strpart(getline(1), 0, 21)  != '#-*-encoding:utf-8-*-'<CR>0put ='#-*-encoding:utf-8-*-'<CR>put =''<CR>endif<CR>:if getline(3)  !=  ""<CR>1put =''<CR>endif<CR><Space>`l
 
@@ -86,7 +91,9 @@ nno <leader>htm :%s#\v(\<[^</]*/[^</]*\>)#\1\r<Cr>:%s#\(<%\)#\r\1<Cr>:%s#\(%>\)#
 
 "for zencoding
 nm # v%<C-Y>,
-nm & v%
+" Tip: original & maps to repeat :s
+" I feel its better,so comment out
+"nm & v%
 
 " Fn Keybings                                           {{{
 " F1 for save                                           {{{
@@ -140,7 +147,7 @@ nno <F8> :TlistToggle<CR>
 nno <S-F8> :NERDTreeToggle<CR>
 "}}}
 " F9 for formatting                                     {{{
-nno <F9> mlgg=G`l
+nno <F9> mlgg=G`l:FixWhitespace
 vno <F9> =gv
 nno <S-F9> :'a,'bs/\v:(\w+) \=\>/\1:
 "}}}
@@ -160,14 +167,21 @@ im  <Esc>vbxa
 im <silent> <C-Del> wdw
 im <silent> <C-Del> <esc>vexi
 
-nnoremap / /\v
+nno / /\v
 cno %s %s/\v
+
+nno ; :
+nno : ;
 nno \ :
-nno \ :
+
+map \ <M-\>
+map ' <M-'>
+
+ino \ <C-O>:
 ino ' <C-O>:
 vno <leader>y "+y
 vno <C-C> "+y
-"no S :
+
 autocmd FileType gitcommit let b:git='true'
 if !exists("b:git")
     no _ $

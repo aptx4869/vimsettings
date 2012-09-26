@@ -1,20 +1,20 @@
 if MySys() == 'linux'
     "Fast reloading of the .vimrc
-    map <silent> <leader>sv :so ~/.vimrc<cr>
+    nno <silent> <leader>es :so ~/.vimrc<cr>
     "Fast editing of .vimrc
-    map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
+    nno <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
     "When .vimrc is edited, reload it
     au! bufwritepost .vimrc so ~/.vimrc
-    au FileType python nmap <F12> :!python %
-    au FileType ruby   nmap <F12> :!ruby %
-    au FileType tex    nmap <F12> :!pdflatex %
-    au FileType sh     nmap <F12> :!bash %
-    au BufNewFile,BufRead .Xresources nmap <F12> :!xrdb %<cr>
-    au FileType tmux   nmap <F12> :!tmux source %<cr>
+    au FileType python nno <F12> :!python %
+    au FileType ruby   nno <F12> :!ruby %
+    au FileType tex    nno <F12> :!pdflatex %
+    au FileType sh     nno <F12> :!bash %
+    au BufNewFile,BufRead .Xresources nno <F12> :!xrdb %<cr>
+    au FileType tmux   nno <F12> :!tmux source %<cr>
     "set guifont=Arial\ monospaced\ for\ SAP\ 14
     set guifont=Arial\ monospaced\ for\ SAP\ for\ Powerline\ 14
     set gfw=文泉驿等宽微米黑\ 14
-    nmap <S-F1> :w !sudo tee %
+    nno <S-F1> :w !sudo tee %
     let g:template_path = $HOME . "/.vim/skel"
     set notimeout          " 映射时不检查超时
     set ttimeout           " 终端键码检查超时
@@ -41,20 +41,20 @@ elseif MySys() == 'windows'
     set winaltkeys=no
 
     "Fast reloading of the _vimrc
-    map <silent> <leader>sv :so $vim/_vimrc<cr>
+    nno <silent> <leader>es :so $vim/_vimrc<cr>
     "Fast editing of _vimrc with different PC
     if hostname() == "BERT-PC"
-	map <silent> <leader>ee :call SwitchToBuf("C:/Program Files (x86)/Vim/_vimrc")<cr>
+	nno <silent> <leader>ee :call SwitchToBuf("C:/Program Files (x86)/Vim/_vimrc")<cr>
     el
-	map <silent> <leader>ee :call SwitchToBuf("c:/Program Files/Vim/_vimrc")<cr>
+	nno <silent> <leader>ee :call SwitchToBuf("c:/Program Files/Vim/_vimrc")<cr>
     en
     "When _vimrc is edited, reload it
     au! bufwritepost _vimrc so $vim/_vimrc
 
-    au FileType python     nmap <F12> :!python.exe %
-    au FileType tex        nmap <F12> :!pdflatex.exe %
-    au FileType ruby       nmap <F12> :!C:\RailsInstaller\Ruby1.9.3\bin\ruby.exe %
-    au FileType autohotkey nmap <F12> :w<Enter><Esc>:mksession! lastsession.vim<Enter>
+    au FileType python     nno <F12> :!python.exe %
+    au FileType tex        nno <F12> :!pdflatex.exe %
+    au FileType ruby       nno <F12> :!C:\RailsInstaller\Ruby1.9.3\bin\ruby.exe %
+    au FileType autohotkey nno <F12> :w<Enter><Esc>:mksession! lastsession.vim<Enter>
     "set pretty fonts for coding
     set guifont=Arial_monospaced_for_SAP:h14:cANSI
     set gfw=Yahei_Mono:h14:cGB2312
