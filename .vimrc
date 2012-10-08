@@ -39,8 +39,13 @@ set tags+=tags;
 set wrap
 set nolinebreak
 set textwidth=80
+
+for ft in ['crontab','conf']
+    exec "au FileType ".ft." set textwidth=255"
+endfor
+
 set formatoptions+=Mm
-set iskeyword+=<,>,(,),[,]
+"set iskeyword+=<,>,(,),[,]
 
 """"""""""""""""""" Auto detect file encoding """""""""""""""""""""""
 set encoding=utf-8
