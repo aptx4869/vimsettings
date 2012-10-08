@@ -126,7 +126,7 @@ nno <S-F4> :q!<CR>
 ino <F4>   <Esc>:q<CR>
 ino <S-F4> <Esc>:q!<CR>
 "}}}
-" F5 for visual edit                                    {{{
+" F5 for visual block edit                                    {{{
 nno <F5>   gv
 nno <S-F5> gvI
 nno <M-F5> gvA
@@ -149,7 +149,7 @@ nno <S-F8> :NERDTreeToggle<CR>
 " F9 for formatting                                     {{{
 nno <F9> mlgg=G`l:FixWhitespace
 vno <F9> =gv
-nno <S-F9> :'a,'bs/\v:(\w+) \=\>/\1:
+au FileType ruby nno <S-F9> :'a,'bs/\v:(\w+) \=\>/\1:
 "}}}
 
 nno <F11> :!ctags -R --fields=+lS
