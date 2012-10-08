@@ -15,8 +15,6 @@ set shiftwidth=2
 
 noremap <buffer> K :!ruby %<CR>
 
-nnoremap <buffer> <F1> :if strpart(getline(1),0,21) !='#!/usr/math/bin/ruby'<CR>0put ='#!/usr/math/bin/ruby'<CR>put =''<CR>endif<CR>:if getline(3) != ""<CR>1put =''<CR>endif<CR><Space>3Gi
-
 inoremap <buffer> ;; ;
 inoremap <buffer> ;e <CR><BS>end
 inoremap <buffer> ;h <Space>=><Space>
