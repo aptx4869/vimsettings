@@ -84,7 +84,7 @@ nno <leader>q :QB<CR>
 " quick add utf8 file header
 "nnoremap <buffer> <F1> :if strpart(getline(1),0,21) !='#!/usr/math/bin/ruby'<CR>0put ='#!/usr/math/bin/ruby'<CR>put =''<CR>endif<CR>:if getline(3) != ""<CR>1put =''<CR>endif<CR><Space>3Gi
 "nno <leader>utf mlggO#-*-encoding:utf-8-*-<Esc>`l
-nno <leader>u ml:if strpart(getline(1), 0, 21)  != '#-*-encoding:utf-8-*-'<CR>0put ='#-*-encoding:utf-8-*-'<CR>put =''<CR>endif<CR>:if getline(3)  !=  ""<CR>1put =''<CR>endif<CR><Space>`l
+nno <leader>u ml:if strpart(getline(1), 0, 21)  != '# encoding:utf-8'<CR>0put ='# encoding:utf-8'<CR>put =''<CR>endif<CR>:if getline(3)  !=  ""<CR>1put =''<CR>endif<CR><Space>`l
 
 "html formatting
 nno <leader>htm :%s#\v(\<[^</]*/[^</]*\>)#\1\r<Cr>:%s#\(<%\)#\r\1<Cr>:%s#\(%>\)#\1\r<Cr>gg=G:g/^\s*$/d<Cr>
@@ -182,15 +182,9 @@ ino ' <C-O>:
 vno <leader>y "+y
 vno <C-C> "+y
 
-autocmd FileType gitcommit let b:git='true'
-if !exists("b:git")
-    no _ $
-    no - ^
-else
-    "source .vim/bundle/vim-fugitive/plugin/fugitive.vim
-    "nnoremap <buffer> <silent> - :<C-U>execute <SID>StageToggle(line('.'),line('.')+v:count1-1)<CR>
-    "xnoremap <buffer> <silent> - :<C-U>execute <SID>StageToggle(line("'<"),line("'>"))<CR>
-endif
+no _ $
+no - ^
+
 
 "autocmd FileType gitcommit source .vim/bundle/vim-fugitive/plugin/fugitive.vim
 "autocmd FileType gitcommit nnoremap <buffer> <silent> - :<C-U>execute <SID>StageToggle(line('.'),line('.')+v:count1-1)<CR>

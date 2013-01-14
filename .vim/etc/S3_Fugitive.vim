@@ -1,4 +1,6 @@
 " vim: set sw=4 sts=4 fdm=expr:fde=getline(v\:lnum-1)=~'\\v"\\s*-{20,}'?'>1'\:1 fdl=0:
+let g:fugitive_git_executable = 'LANG=en_US git'
+
 nn <leader>gd :Gdiff<cr>
 nn <leader>gs :Gstatus<cr>
 nn <leader>gc :Gcommit<cr>
