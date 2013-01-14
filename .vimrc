@@ -35,6 +35,7 @@ au FileType autohotkey exec ":so ".VimSetting_Path."/"."ftplugin/MyAutoHotKey.vi
 
 " 不知道哪来的
 set tags+=tags;
+set tags+=gems.tags
 " 回行显示
 set wrap
 set nolinebreak
@@ -119,6 +120,8 @@ endfor
 "etc/S2_vim-powerline.vim
 "etc/S2_XPTemplate.vim
 "etc/S3_VimWiki.vim
+"etc/S3_Fugitive.vim
+"etc/S3_vim_rails.vim
 "etc/S4_rubycomplete.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
