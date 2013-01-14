@@ -198,3 +198,15 @@
 	path = .vim/bundle/YCommentReader
 	url = git://github.com/gvirus/YCommentReader.git
 	ignore=dirty
+[submodule ".vim/bundle/vim-abolish"]
+	path = .vim/bundle/vim-abolish
+	url = git://github.com/tpope/vim-abolish.git
+	ignore=dirty
+[submodule ".vim/bundle/dbext"]
+	path = .vim/bundle/dbext
+	url = git://github.com/vim-scripts/dbext.vim.git
+	ignore=dirty
+[submodule ".vim/bundle/vim-slim"]
+	path = .vim/bundle/vim-slim
+	url = git://github.com/slim-template/vim-slim.git
+	ignore=dirty
