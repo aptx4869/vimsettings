@@ -11,6 +11,7 @@ if MySys() == 'linux'
     au FileType sh     nno <F12> :!bash %
     au BufNewFile,BufRead .Xresources nno <F12> :!xrdb %<cr>
     au FileType tmux   nno <F12> :!tmux source %<cr>
+    au FileType coffee   nno <F12> :CoffeeCompile<cr>
     "set guifont=Arial\ monospaced\ for\ SAP\ 14
     set guifont=Arial\ monospaced\ for\ SAP\ for\ Powerline\ 14
     set gfw=文泉驿等宽微米黑\ 14
