@@ -210,3 +210,6 @@
 	path = .vim/bundle/vim-slim
 	url = git://github.com/slim-template/vim-slim.git
 	ignore=dirty
+[submodule ".vim/bundle/file-line"]
+	path = .vim/bundle/file-line
+	url = git://github.com/bogado/file-line.git
