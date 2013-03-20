@@ -120,23 +120,23 @@
 	ignore=dirty
 [submodule ".vim/vimcn/NERD_commenter"]
 	path = .vim/vimcn/NERD_commenter
-	url = git://github.com/vimcn/NERD_commenter.git
+	url = git://github.com/vimcn/NERD_commenter.cnx.git
 	ignore=dirty
 [submodule ".vim/vimcn/neocompletecache"]
 	path = .vim/vimcn/neocompletecache
-	url = git://github.com/vimcn/neocompletecache.git
+	url = git://github.com/vimcn/neocompletecache.cnx.git
 	ignore=dirty
 [submodule ".vim/vimcn/vimwiki"]
 	path = .vim/vimcn/vimwiki
-	url = git://github.com/vimcn/vimwiki.vim.git
+	url = git://github.com/vimcn/vimwiki.vim.cnx.git
 	ignore=dirty
 [submodule ".vim/vimcn/matchit"]
 	path = .vim/vimcn/matchit
-	url = git://github.com/vimcn/matchit.vim.git
+	url = git://github.com/vimcn/matchit.vim.cnx.git
 	ignore=dirty
 [submodule ".vim/vimcn/NERD_tree"]
 	path = .vim/vimcn/NERD_tree
-	url = git://github.com/vimcn/NERD_tree.vim.git
+	url = git://github.com/vimcn/NERD_tree.cnx.vim.git
 	ignore=dirty
 [submodule ".vim/bundle/vim-ruby"]
 	path = .vim/bundle/vim-ruby
