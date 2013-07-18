@@ -221,3 +221,12 @@
 [submodule ".vim/bundle/vim-textobj-rubyblock"]
 	path = .vim/bundle/vim-textobj-rubyblock
 	url = git://github.com/nelstrom/vim-textobj-rubyblock.git
+[submodule ".vim/bundle/visSum"]
+	path = .vim/bundle/visSum
+	url = git://github.com/vim-scripts/visSum.vim.git
+[submodule ".vim/bundle/vim-blockle"]
+	path = .vim/bundle/vim-blockle
+	url = git://github.com/jgdavey/vim-blockle.git
+[submodule ".vim/bundle/vim-indent-guides"]
+	path = .vim/bundle/vim-indent-guides
+	url = git://github.com/nathanaelkane/vim-indent-guides.git
