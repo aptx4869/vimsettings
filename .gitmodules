@@ -132,7 +132,7 @@
 	ignore=dirty
 [submodule ".vim/vimcn/NERD_tree"]
 	path = .vim/vimcn/NERD_tree
-	url = git://github.com/vimcn/NERD_tree.cnx.vim.git
+	url = https://github.com/vimcn/NERD_tree.vim.cnx.git
 	ignore=dirty
 [submodule ".vim/bundle/vim-ruby"]
 	path = .vim/bundle/vim-ruby
@@ -230,3 +230,6 @@
 [submodule ".vim/bundle/vim-indent-guides"]
 	path = .vim/bundle/vim-indent-guides
 	url = git://github.com/nathanaelkane/vim-indent-guides.git
+[submodule ".vim/bundle/nginx-syntax"]
+	path = .vim/bundle/nginx-syntax
+	url = https://github.com/evanmiller/nginx-vim-syntax.git
