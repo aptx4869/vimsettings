@@ -4,5 +4,6 @@
 "if exists("b:rails_root")
     "nno <silent> <leader>rt :!touch Gemfile<CR>
 "endif
-autocmd User Rails nno <buffer> <silent> <leader>rt :!touch Gemfile<CR>
+autocmd User Rails nno <buffer> <silent> <leader>rt :!touch .rails_restart.log<CR>
+autocmd User Rails nno <buffer> <silent> <leader>tr :!touch .reload_spork.log<CR>
 
