@@ -2,6 +2,7 @@ if has("unix") && !has('gui_macvim')
     "set guifont=Liberation\ Mono\ 10
     "set guifontwide=WenQuanYi\ Zen\ Hei\ 10
 endif
+set linespace=3
 set langmenu=zh_CN.UTF-8
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
