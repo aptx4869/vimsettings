@@ -1,12 +1,74 @@
 set nocompatible
-"call pathogen#runtime_append_all_bundles()
-call pathogen#infect()
-call pathogen#infect('vimcn')
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'groenewege/vim-less'
+Bundle 'tpope/vim-rails'
+Bundle 'vim-scripts/The-NERD-Commenter'
+Bundle 'drmingdrmer/xptemplate'
+Bundle 'vim-scripts/The-NERD-tree'
+Bundle 'vim-scripts/matchit.zip'
+Bundle 'vim-scripts/vimwiki'
+Bundle 'mattn/zencoding-vim'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'Shougo/neocomplcache'
+Bundle 'vim-scripts/xml.vim'
+Bundle 'ervandew/supertab'
+Bundle 'vim-scripts/taglist.vim'
+Bundle 'maksimr/vim-translator'
+Bundle 'vim-scripts/fcitx.vim'
+Bundle 'corntrace/bufexplorer'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-scripts/TeTrIs.vim'
+Bundle 'vim-scripts/qiushibaike'
+Bundle 'lilydjwg/colorizer'
+Bundle 'pangloss/vim-javascript'
+Bundle 'kien/ctrlp.vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'ahao/vimcdoc'
+Bundle 'vim-scripts/calendar.vim--Matsumoto'
+Bundle 'vimcn/NERD_commenter.cnx'
+Bundle 'vimcn/neocompletecache.cnx'
+Bundle 'vimcn/vimwiki.vim.cnx'
+Bundle 'vimcn/matchit.vim.cnx'
+Bundle 'vimcn/NERD_tree.vim.cnx'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'godlygeek/tabular'
+Bundle 'vim-scripts/auto_mkdir'
+Bundle 'mileszs/ack.vim'
+Bundle 'vim-scripts/echofunc.vim'
+Bundle 'sukima/xmledit'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'itspriddle/vim-jquery'
+Bundle 'bronson/vim-trailing-whitespace'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-git'
+Bundle 'gvirus/YCommentReader'
+Bundle 'tpope/vim-abolish'
+Bundle 'vim-scripts/dbext.vim'
+Bundle 'slim-template/vim-slim'
+Bundle 'bogado/file-line'
+Bundle 'tpope/vim-repeat'
+Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'vim-scripts/visSum.vim'
+Bundle 'jgdavey/vim-blockle'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'evanmiller/nginx-vim-syntax'
+Bundle 'junegunn/vim-easy-align'
+Bundle 'bling/vim-airline'
+Bundle 'gmarik/vundle'
+
 so $VIMRUNTIME/vimrc_example.vim
 set history=500
 set nobackup
 set autoread
+set et sta sw=2 sts=2
 set fcs=fold:\ ,vert:\|
+set noeb vb t_vb=
 
 " 帮助文档
 set helplang=cn
@@ -17,10 +79,8 @@ filetype indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("win32")
     let VimSetting_Path = $HOME."/"."vimfiles"
-    call pathogen#infect('windows')
 el
     let VimSetting_Path = $HOME."/".".vim"
-    call pathogen#infect('linux')
 en
 let VimSetting_etc = VimSetting_Path . "/etc"
 exec ":so ".VimSetting_Path."/"."Functions.vim"
@@ -28,7 +88,11 @@ au BufRead *vimrc exec ":set path+=".VimSetting_Path
 au FileType python exec ":so ".VimSetting_Path."/"."ftplugin/MyPython.vim"
 au FileType ruby exec ":so ".VimSetting_Path."/"."ftplugin/ruby-macros.vim"
 au FileType ruby exec ":so ".VimSetting_Path."/"."ftplugin/MyRuby.vim"
+au FileType ruby nno <buffer> <silent> <leader>db obinding.pry<ESC>
 au FileType autohotkey exec ":so ".VimSetting_Path."/"."ftplugin/MyAutoHotKey.vim"
+au FileType slim setlocal et sta sw=2 sts=2
+au FileType ruby setlocal et sta sw=2 sts=2
+au FileType css setlocal iskeyword+=-,$
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -94,7 +158,7 @@ for i in range(10)
     let load_setting_name = "/S".i."*.vim"
     " plugin settings in .vim/etc should use a S[0-9] prefix as 'runlevel'
     for f in split(glob(VimSetting_etc.load_setting_name), '\n')
-	exe 'source ' f
+        exe 'source ' f
     endfor
 endfor
 
@@ -129,7 +193,7 @@ hi Normal ctermfg=253
 hi Comment ctermfg=248
 set title  titlestring=%<%F%=%l/%L-%P titlelen=70
 
-set showcmd		" display incomplete commands
+set showcmd " display incomplete commands
 
 " execute project related configuration in current directory
 if filereadable("workspace.vim")
