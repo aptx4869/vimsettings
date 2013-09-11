@@ -1,6 +1,6 @@
 "  vim: set ft=vim fdm=marker fdc=3 fdl=0:
 "Set mapleader
-let mapleader = ','
+let mapleader = ' '
 
 "In fact we can call it anything
 "map , <AwesomestLeaderEver>
@@ -9,7 +9,13 @@ let mapleader = ','
 """""""""""for disable hight light""""""""""""
 noremap <silent> <leader><space> :silent noh<CR>
 
+" for angular.js injector's syntax
+au FileType coffee nno <buffer><leader>p yyp:s/'//<cr>i(<esc>A)-><esc>:silent noh<CR>
+au FileType coffee nno <buffer> <silent> <leader>db oconsole.log<space>
 
+nno <C-@> <C-^>
+nno $ `
+nno <S-F12> :!rm %
 nno <silent> <leader>fe :Sexplore!<cr>
 vm  <silent> <leader>cf <Esc>`>o}}}<Esc><leader>cc`<O{{{<Esc><leader>cc^a<space>
 nno <silent> <Tab> W
@@ -139,7 +145,17 @@ nno <F6> lbvey:%s/<C-R>//<C-R>0
 nno <S-F6> lbvey:'a,'bs/<C-R>//<C-R>0
 "}}}
 " F7 for paste                                          {{{
-set pastetoggle=<F7>
+"set pastetoggle=<F7>
+"
+function TogglePaste()
+    if &paste
+        set nopaste
+    else
+        set paste
+    endif
+endfunc
+nno <F7> :call TogglePaste()<cr>
+nno <S-F7> "*p
 "nm <S-F7> :set paste<CR>o<S-Insert>
 ""}}}
 " F8 for browse                                         {{{
@@ -161,7 +177,7 @@ nno <M-F11> :mksession lastsession.vim
 " quick delete a word
 nno <BS> bdw
 im <C-BS> <Esc>vbxa
-im  <Esc>vbxa
+"im  <Esc>vbxa
 
 ""ToDo: find out why these don't work under terminal
 im <silent> <C-Del> wdw
