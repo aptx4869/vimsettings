@@ -18,7 +18,8 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'vimshell' : $HOME.'/.vimshell_hist',
     \ 'scheme' : $HOME.'/.gosh_completions',
     \ 'javascript' : $HOME.'/.vim/dict/js-jquery.dict',
-    \ 'ruby' : $HOME.'/.vim/dict/ruby-china.dict',
+    \ 'coffee' : $HOME.'/.vim/dict/coffeescript.dict',
+    \ 'ruby' : $HOME.'/.vim/dict/ruby.dict',
     \ 'text' : $HOME.'/.vim/dict/english.dict'
     \ }
 
@@ -42,15 +43,14 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 "inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-h>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
-
 " AutoComplPop like behavior.
 "let g:neocomplcache_enable_auto_select = 1
 
