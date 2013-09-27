@@ -54,5 +54,3 @@ for i in .vim .vimrc .gvimrc; do
 	echo "\033[0;33mLinking ${i}\033[0m \033[0;32] from ${HOME}/${i}\033[0m";
 	ln -s "${VIMSETS}/${i}" "$HOME/${i}"
 done
-echo "\033[0;34mInstalling plugins with Vundle...\033[0m"
-vim +BundleInstall +qall
