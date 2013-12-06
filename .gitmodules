@@ -16,9 +16,6 @@
 [submodule ".vim/bundle/matchit"]
 	path = .vim/bundle/matchit
 	url = git://github.com/vim-scripts/matchit.zip.git
-[submodule ".vim/bundle/vimwiki"]
-	path = .vim/bundle/vimwiki
-	url = git://github.com/vim-scripts/vimwiki.git
 [submodule ".vim/bundle/zencoding"]
 	path = .vim/bundle/zencoding
 	url = git://github.com/mattn/zencoding-vim.git
@@ -31,9 +28,6 @@
 [submodule ".vim/bundle/xml-vim"]
 	path = .vim/bundle/xml-vim
 	url = git://github.com/vim-scripts/xml.vim.git
-[submodule ".vim/bundle/supertab"]
-	path = .vim/bundle/supertab
-	url = git://github.com/ervandew/supertab.git
 [submodule ".vim/bundle/taglist"]
 	path = .vim/bundle/taglist
 	url = git://github.com/vim-scripts/taglist.vim.git
@@ -52,9 +46,6 @@
 [submodule ".vim/bundle/surround"]
 	path = .vim/bundle/surround
 	url = git://github.com/tpope/vim-surround.git
-[submodule ".vim/bundle/TeTrIs"]
-	path = .vim/bundle/TeTrIs
-	url = git://github.com/vim-scripts/TeTrIs.vim.git
 [submodule ".vim/bundle/qiushibaike"]
 	path = .vim/bundle/qiushibaike
 	url = git://github.com/vim-scripts/qiushibaike.git
@@ -73,9 +64,6 @@
 [submodule ".vim/bundle/vimcdoc"]
 	path = .vim/bundle/vimcdoc
 	url = git://github.com/ahao/vimcdoc.git
-[submodule ".vim/bundle/calendar"]
-	path = .vim/bundle/calendar
-	url = git://github.com/vim-scripts/calendar.vim--Matsumoto.git
 [submodule ".vim/bundle/vim-ruby"]
 	path = .vim/bundle/vim-ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
@@ -106,9 +94,6 @@
 [submodule ".vim/bundle/vim-git"]
 	path = .vim/bundle/vim-git
 	url = git://github.com/tpope/vim-git.git
-[submodule ".vim/bundle/YCommentReader"]
-	path = .vim/bundle/YCommentReader
-	url = git://github.com/gvirus/YCommentReader.git
 [submodule ".vim/bundle/vim-abolish"]
 	path = .vim/bundle/vim-abolish
 	url = git://github.com/tpope/vim-abolish.git

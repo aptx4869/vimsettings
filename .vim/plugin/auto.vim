@@ -25,10 +25,10 @@ au FileType c,cc,cpp,h,html,python :call Cp()
 au FileType eruby,javascript,python,ruby,sh,cpp,c,cc,h,html,perl :call Ad()
 
 fu Ad()
-    ino <buffer> [ <C-R>=<SID>Double("[","]")<CR>
-    ino <buffer> { <C-R>=<SID>Double("{","}")<CR>
-    ino <buffer> ' <C-R>=<SID>Double("'","'")<CR>
-    ino <buffer> " <C-R>=<SID>Double('"','"')<CR>
+    ino <buffer> [[ <C-R>=<SID>Double("[","]")<CR>
+    ino <buffer> {{ <C-R>=<SID>Double("{","}")<CR>
+    ino <buffer> '' <C-R>=<SID>Double("'","'")<CR>
+    ino <buffer> "" <C-R>=<SID>Double('"','"')<CR>
 endf
 
 fu! s:Double(left,right)

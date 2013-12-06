@@ -19,38 +19,46 @@ inoremap <buffer> ;; ;
 inoremap <buffer> ;e <CR><BS>end
 inoremap <buffer> ;h <Space>=><Space>
 
-inoremap <buffer> " <C-R>=<SID>Double('"','"')<CR>
-inoremap <buffer> ` <C-R>=<SID>Double('`','`')<CR>
-inoremap <buffer> ' <C-R>=<SID>Double("\'","\'")<CR>
-inoremap <buffer> ( ()<Left>
-inoremap <buffer> [ <C-R>=<SID>Double("[","]")<CR>
-inoremap <buffer> { <C-R>=<SID>Double("{","}")<CR>
+inoremap <buffer> "" <C-R>=<SID>Double('"','"')<CR>
+inoremap <buffer> `` <C-R>=<SID>Double('`','`')<CR>
+inoremap <buffer> '' <C-R>=<SID>Double("\'","\'")<CR>
+"inoremap <buffer> ( ()<Left>
+"inoremap <buffer> [ <C-R>=<SID>Double("[","]")<CR>
+inoremap <buffer> ## #<C-R>=<SID>Double("{","}")<CR>
 
 function! s:Double(left,right)
-    if strpart(getline(line(".")),col(".")-2,2) == a:left . a:right
-	return "\<Del>"
-    else
-	return a:left . a:right . "\<Left>"
-    endif
+  if strpart(getline(line(".")),col(".")-2,2) == a:left . a:right
+    return "\<Del>"
+  else
+    return a:left . a:right . "\<Left>"
+  endif
 endfunction
 
 vnoremap <buffer> `[ <C-C>`>a]<Esc>`<i[<Esc>
+vnoremap <buffer> `] <C-C>`<i[<Esc>`>a]<Esc>
+
 vnoremap <buffer> `( <C-C>`>a)<Esc>`<i(<Esc>
+vnoremap <buffer> `) <C-C>`<i(<Esc>`>a)<Esc>
+
 vnoremap <buffer> `{ <C-C>`>a}<Esc>`<i{<Esc>
+vnoremap <buffer> `} <C-C>`<i{<Esc>`>a}<Esc>
+
 vnoremap <buffer> `" <C-C>`>a"<Esc>`<i"<Esc>
 vnoremap <buffer> `` <C-C>`>a`<Esc>`<i`<Esc>
+vnoremap <buffer> `d <C-C>`>a<cr>end<Esc>`<ido<cr><Esc>
+vnoremap <buffer> `e <C-C>`<ido<Esc>`>a<cr>end<Esc>
 
 noremap <buffer> <C-Del> :call <SID>DeleteBrackets()<CR>
 
 function! s:DeleteBrackets()
-   let c = getline(line("."))[col(".") - 1]
-   if c =~ '{[('
-      normal %r ``x
-   elseif c =~ '}])'
-      normal %%x``r ``
-   elseif c == '"'
-      exe "normal x/\"\<CR>x``"
-   endif
+  let c = getline(line("."))[col(".") - 1]
+  if c =~ '{[('
+    normal %r ``x
+  elseif c =~ '}])'
+    normal %%x``r ``
+  elseif c == '"'
+    exe "normal x/\"\<CR>x``"
+  endif
 endfunction
 
 " The following macros automatically insert complete various ruby items.
@@ -62,11 +70,11 @@ inoremap <buffer> <C-Space> <C-V><Space>
 
 inoremap <buffer> \| <C-R>=<SID>DoubleBars()<CR>
 function! s:DoubleBars()
-    if strpart(getline(line(".")),0,col(".")-2) =~ '[/#]'
-	return "\|"
-    else
-	return "\|\|\<Left>"
-    endif
+  if strpart(getline(line(".")),0,col(".")-2) =~ '[/#]'
+    return "\|"
+  else
+    return "\|\|\<Left>"
+  endif
 endfunction
 
 iab <buffer> def <C-R>=<SID>SpecialAbbrev("def")<CR>
@@ -81,21 +89,21 @@ iab <buffer> until <C-R>=<SID>SpecialAbbrev("until")<CR>
 iab <buffer> while <C-R>=<SID>SpecialAbbrev("while")<CR>
 
 function! s:SpecialAbbrev(string)
-    if getline(line(".")) =~ '\S'  " Not a blank line.
-	return a:string
-    else 
-	return a:string . "\<CR>end\<Esc>kA"
-    endif
+  if getline(line(".")) =~ '\S'  " Not a blank line.
+    return a:string
+  else
+    return a:string . "\<CR>end\<Esc>kA"
+  endif
 endfunction
 
 function! s:For()
-    if getline(line(".")) =~ '\S'  " Not a blank line.
-	return "for"
-    else 
-	return "for in \<CR>end\<Esc>k$3hi"
-    endif
+  if getline(line(".")) =~ '\S'  " Not a blank line.
+    return "for"
+  else
+    return "for in \<CR>end\<Esc>k$3hi"
+  endif
 endfunction
 
 function! s:Case()
-    return "case\<Esc>owhen \<Esc>oend\<Esc>2kA"
+  return "case\<Esc>owhen \<Esc>oend\<Esc>2kA"
 endfunction

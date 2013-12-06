@@ -165,7 +165,7 @@ nno <S-F8> :NERDTreeToggle<CR>
 " F9 for formatting                                     {{{
 nno <F9> mlgg=G`l:FixWhitespace
 vno <F9> =gv
-au FileType ruby nno <S-F9> :'a,'bs/\v:(\w+) \=\>/\1:
+au FileType ruby nno <S-F9> :'a,'bs/\v:(\w+)\s+\=\>/\1:
 "}}}
 
 nno <F11> :!ctags -R --fields=+lS
