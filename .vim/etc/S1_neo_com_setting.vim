@@ -62,7 +62,6 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 "inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
 
 " Enable omni completion.
-au BufNewFile,BufRead *.scss set filetype=css
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
