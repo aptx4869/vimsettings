@@ -28,6 +28,7 @@ au BufRead *vimrc exec ":set path+=".VimSetting_Path
 au FileType python exec ":so ".VimSetting_Path."/"."ftplugin/MyPython.vim"
 au FileType ruby exec ":so ".VimSetting_Path."/"."ftplugin/ruby-macros.vim"
 au FileType ruby exec ":so ".VimSetting_Path."/"."ftplugin/MyRuby.vim"
+au FileType ruby exec ":Rvm use"
 au FileType ruby nno <buffer> <silent> <leader>db obinding.pry<ESC>
 au FileType autohotkey exec ":so ".VimSetting_Path."/"."ftplugin/MyAutoHotKey.vim"
 au FileType slim setlocal et sta sw=2 sts=2
@@ -38,8 +39,8 @@ au FileType css setlocal iskeyword+=-,$
 
 
 " 不知道哪来的
-set tags+=tags;
 set tags+=gems.tags
+set tags+=coffee.tags
 " 回行显示
 set wrap
 set nolinebreak
@@ -126,6 +127,7 @@ endfor
 "etc/S3_VimWiki.vim
 "etc/S3_Fugitive.vim
 "etc/S3_vim_rails.vim
+"etc/S3_vim_rspec.vim
 "etc/S4_rubycomplete.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

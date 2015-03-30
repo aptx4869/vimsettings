@@ -133,3 +133,15 @@
 [submodule ".vim/bundle/editorconfig"]
 	path = .vim/bundle/editorconfig
 	url = https://github.com/editorconfig/editorconfig-vim.git
+[submodule ".vim/bundle/vim-rubocop"]
+	path = .vim/bundle/vim-rubocop
+	url = https://github.com/ngmy/vim-rubocop
+[submodule ".vim/bundle/typescript-vim"]
+	path = .vim/bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule ".vim/bundle/vim-rvm"]
+	path = .vim/bundle/vim-rvm
+	url = git://github.com/tpope/vim-rvm.git
+[submodule ".vim/bundle/vim-rspec"]
+	path = .vim/bundle/vim-rspec
+	url = https://github.com/thoughtbot/vim-rspec.git

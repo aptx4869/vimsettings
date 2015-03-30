@@ -2,4 +2,7 @@
 #     File: <T_FILENAME>
 #     Create Date: <T_CREATE_DATE>
 
-"zh-CN":
+"zh-CN": &zh_cn
+
+zh:
+  <<: *zh_cn
