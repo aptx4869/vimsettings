@@ -4,7 +4,7 @@
 " Maintainer:	Jestery Liu <jestery@gmail.com>
 " Last Change:	2007/02/02
 " Version:		0.1
-" Description: 
+" Description:
 "	Load template file for editing new files
 " Options:
 "	(int) g:template_load
@@ -123,7 +123,7 @@ function! TemplateReplTags()
 	if exists("g:T_LICENSE")
 		sil! execute sl.','.el."s/<T_LICENSE>/".g:T_LICENSE."/g"
 	endif
-	if exists("g:T_DATE_FORMAT") 
+	if exists("g:T_DATE_FORMAT")
 		sil! execute sl.','.el."s/<T_CREATE_DATE>/".strftime(g:T_DATE_FORMAT)."/g"
 	endif
 	if exists("g:T_FILENAME_USE_FULL_PATH") && g:T_FILENAME_USE_FULL_PATH==1
