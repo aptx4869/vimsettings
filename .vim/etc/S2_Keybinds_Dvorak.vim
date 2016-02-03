@@ -127,10 +127,10 @@ nno <M-F3> :'a,'bw! >> <C-R>=expand('%:h').'/'<cr>
 vno <M-F3> :w! >> <C-R>=expand('%:h').'/'<cr>
 "}}}
 " F4 for close                                          {{{
-nno <F4>   :q<CR>
-nno <S-F4> :q!<CR>
-ino <F4>   <Esc>:q<CR>
-ino <S-F4> <Esc>:q!<CR>
+nno <F4>   : q<CR>
+nno <S-F4> : q!<CR>
+ino <F4>   <Esc>: q<CR>
+ino <S-F4> <Esc>: q!<CR>
 "}}}
 " F5 for visual block edit                                    {{{
 nno <F5>   gv

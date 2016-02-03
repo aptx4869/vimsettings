@@ -30,6 +30,7 @@ au FileType ruby exec ":so ".VimSetting_Path."/"."ftplugin/ruby-macros.vim"
 au FileType ruby exec ":so ".VimSetting_Path."/"."ftplugin/MyRuby.vim"
 au FileType ruby exec ":Rvm use"
 au FileType ruby nno <buffer> <silent> <leader>db obinding.pry<ESC>
+au FileType ruby nno <buffer> <silent> <leader>da ea.tap { \|x\| binding.pry}<ESC>
 au FileType autohotkey exec ":so ".VimSetting_Path."/"."ftplugin/MyAutoHotKey.vim"
 au FileType slim setlocal et sta sw=2 sts=2
 au FileType ruby setlocal et sta sw=2 sts=2
