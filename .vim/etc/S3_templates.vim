@@ -1,5 +1,3 @@
-
-
 let g:templates_user_variables = [
             \   ['SPEC_REQUIRE', 'TemplateCustomSpecRequire'],
             \   ['SPEC_CLASS', 'TemplateCustomSpecClass'],
@@ -7,6 +5,7 @@ let g:templates_user_variables = [
             \   ['RELATIVE_PATH', 'TemplateCustomRelativePath'],
             \   ['DOT_TO_PWD', 'TemplateCustomDotToPwd'],
             \   ['DASHERIZE', 'TemplateDasherize'],
+            \   ['FILE_DIR', 'TemplateFileDir'],
             \ ]
 fun! TemplateCustomFlieName()
     return expand("%:t:r:r:r")
@@ -43,4 +42,8 @@ endf
 fun! TemplateCustomSpecClass()
     let l:class = substitute(TemplateCustomClass(), "_Spec", "", "g")
     return substitute(l:class, "_", "", "g")
+endf
+
+fun! TemplateFileDir()
+    return substitute(expand('%:h:t'), "\\([a-zA-Z]\\+\\)", "\\u\\1\\e", "g")
 endf

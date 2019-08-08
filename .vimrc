@@ -1,10 +1,25 @@
 set nocompatible
 "call pathogen#runtime_append_all_bundles()
 call pathogen#infect()
-so $VIMRUNTIME/vimrc_example.vim
+
+if has('nvim')
+    " so /usr/share/nvim/runtime/vimrc_example.vim
+    " so /usr/share/vim/vim80/vimrc_example.vim
+    so $VIMRUNTIME/vimrc_example.vim
+el
+    so $VIMRUNTIME/vimrc_example.vim
+end
 set history=500
 set nobackup
+set udf
 set autoread
+set et sta sw=2 sts=2
+set fcs=fold:\ ,vert:\|
+set noeb vb t_vb=
+" set backupcopy=yes
+set dir=~/.vimswap//,/var/tmp//,/tmp//,.
+set backupdir=~/tmp/vimback
+set undodir=~/tmp/vim
 
 " 帮助文档
 set helplang=cn
@@ -14,30 +29,42 @@ filetype indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("win32")
-    let VimSetting_Path = $HOME . "/vimfiles"
+    let VimSetting_Path = $HOME."/"."vimfiles"
 el
-    let VimSetting_Path = $HOME . "/.vim"
+    let VimSetting_Path = $HOME."/".".vim"
 en
 let VimSetting_etc = VimSetting_Path . "/etc"
-exec ":so " . VimSetting_Path . "/Functions.vim"
-
-au FileType python exec ":so " . VimSetting_Path . "/ftplugin/MyPython.vim"
-au FileType ruby exec ":so " . VimSetting_Path . "/ftplugin/ruby-macros.vim"
-au FileType ruby exec ":so " . VimSetting_Path . "/ftplugin/MyRuby.vim"
-au FileType autohotkey exec ":so " . VimSetting_Path . "/ftplugin/MyAutoHotKey.vim"
+exec ":so ".VimSetting_Path."/"."Functions.vim"
+au BufRead *vimrc exec ":set path+=".VimSetting_Path
+au FileType python exec ":so ".VimSetting_Path."/"."ftplugin/MyPython.vim"
+au FileType ruby exec ":so ".VimSetting_Path."/"."ftplugin/ruby-macros.vim"
+au FileType ruby exec ":so ".VimSetting_Path."/"."ftplugin/MyRuby.vim"
+" au FileType ruby exec ":Rvm use"
+au FileType ruby nno <buffer> <silent> <leader>db obinding.pry<ESC>
+au FileType ruby nno <buffer> <silent> <leader>da ea.tap { \|x\| binding.pry}<ESC>
+au FileType autohotkey exec ":so ".VimSetting_Path."/"."ftplugin/MyAutoHotKey.vim"
+au FileType slim setlocal et sta sw=2 sts=2 iskeyword+=-,$
+au FileType ruby setlocal et sta sw=2 sts=2
+au FileType css setlocal iskeyword+=-,$
+" au BufNewFile,BufRead * setlocal syntax=ON
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" execute project related configuration in current directory
-if filereadable("workspace.vim")
-    so workspace.vim
-en
 
 " 不知道哪来的
-set tags+=tags;
+set tags+=gems.tags
+set tags+=coffee.tags
 " 回行显示
 set wrap
 set nolinebreak
+set textwidth=80
+
+for ft in ['crontab','conf']
+    exec "au FileType ".ft." set textwidth=255"
+endfor
+
+set formatoptions+=Mm
+"set iskeyword+=<,>,(,),[,]
 
 """"""""""""""""""" Auto detect file encoding """""""""""""""""""""""
 set encoding=utf-8
@@ -53,7 +80,7 @@ set foldmethod=syntax
 set foldlevel=100
 
 "实现C程序的缩进
-set cin   
+set cin
 set sw=4
 set number
 set smartindent
@@ -62,7 +89,7 @@ behave xterm
 "高亮所在行、列
 set cursorline
 set cursorcolumn
-set scrolloff=3 
+set scrolloff=3
 
 "always display status line
 set laststatus=2
@@ -81,17 +108,80 @@ endif
 
 """"""""""""""" Load plugin settings in .vim/etc """"""""""""""""""""
 
-for i in split('1,2,3,4,5', ',')
-    let load_setting_name = "/S" . i . "*.vim"
-    " plugin settings in .vim/etc should use a S[1-5] prefix as 'runlevel'
-    for f in split(glob(VimSetting_etc . load_setting_name), '\n')
-	exe 'source ' f
+for i in range(10)
+    let load_setting_name = "/S".i."*.vim"
+    " plugin settings in .vim/etc should use a S[0-9] prefix as 'runlevel'
+    for f in split(glob(VimSetting_etc.load_setting_name), '\n')
+        exe 'source ' f
     endfor
 endfor
 
+" etc/S1_EasyMotion.vim
+" etc/S1_Urxvt_fixbinding.vim
+" etc/S1_deoplete.vim
+" etc/S1_neo_com_setting.vim
+" etc/S1_netrw.vim
+" etc/S2_Ack_vim.vim
+" etc/S2_Color_Solarized.vim
+" etc/S2_Keybinds_Dvorak.vim
+" etc/S2_LaTeX_Suit.vim
+" etc/S2_MyJunk.vim
+" etc/S2_Pmenu_color.vim
+" etc/S2_SuperTab.vim
+" etc/S2_SystemDiff.vim
+" etc/S2_Tabulazire.vim
+" etc/S2_TagList.vim
+" etc/S2_XPTemplate.vim
+" etc/S2_coffeelint.vim
+" etc/S2_easy_align.vim
+" etc/S2_google_tarnslator.vim
+" etc/S2_nerdcommenter.vim
+" etc/S2_omnicomplete.vim
+" etc/S2_template_loader.vim
+" etc/S2_vim-airline.vim
+" etc/S2_vim-powerline.vim
+" etc/S3_Fugitive.vim
+" etc/S3_VimWiki.vim
+" etc/S3_syntastic.vim
+" etc/S3_templates.vim
+" etc/S3_vim_abolish.vim
+" etc/S3_vim_rails.vim
+" etc/S3_vim_rspec.vim
+" etc/S4_deoplete.vim
+" etc/S4_rubycomplete.vim
+" etc/s1_neocomplete.vim
+" etc/s2_LaTeX_Suit.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+
+let g:UltiSnipsSnippetsDir=$HOME.'/.vim/snips'
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsExpandTrigger="<F2>"
+let g:UltiSnipsJumpForwardTrigger="<F2>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 hi Normal ctermfg=253
-hi Comment ctermfg=244
-set showcmd		" display incomplete commands
+hi Comment ctermfg=248
+highlight UnicodeNbsp ctermbg=red guibg=red
+match UnicodeNbsp //
+autocmd BufWinEnter * match UnicodeNbsp //
+autocmd InsertEnter * match UnicodeNbsp //
+autocmd InsertLeave * match UnicodeNbsp //
+autocmd BufWinLeave * call clearmatches()
+
+set title  titlestring=%<%F%=%l/%L-%P titlelen=70
+
+set showcmd " display incomplete commands
+
+" execute project related configuration in current directory
+if filereadable("workspace.vim")
+    so workspace.vim
+en
+
+"autocmd InsertLeave * if &diff == 1 | diffupdate | endif
+"set diffopt+=context:8
 "set verbose=9   " for debug
+"set wd=500
