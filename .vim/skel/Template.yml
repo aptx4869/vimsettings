@@ -1,0 +1,9 @@
+# vim: set fdm=indent
+# File: <T_FILENAME>
+# Create Date: <T_CREATE_DATE>
+
+"zh-CN": &zh_cn
+  <T_FILENAME>: <T_CURSOR>
+
+zh:
+  <<: *zh_cn

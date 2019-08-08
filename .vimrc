@@ -3,7 +3,7 @@ set nocompatible
 call pathogen#infect()
 
 if has('nvim')
-    " so /usr/share/nvim/runtime/vimrc_example.vim
+    so /usr/share/nvim/runtime/vimrc_example.vim
     " so /usr/share/vim/vim80/vimrc_example.vim
     so $VIMRUNTIME/vimrc_example.vim
 el
@@ -165,13 +165,6 @@ let g:UltiSnipsEditSplit="vertical"
 
 hi Normal ctermfg=253
 hi Comment ctermfg=248
-highlight UnicodeNbsp ctermbg=red guibg=red
-match UnicodeNbsp //
-autocmd BufWinEnter * match UnicodeNbsp //
-autocmd InsertEnter * match UnicodeNbsp //
-autocmd InsertLeave * match UnicodeNbsp //
-autocmd BufWinLeave * call clearmatches()
-
 set title  titlestring=%<%F%=%l/%L-%P titlelen=70
 
 set showcmd " display incomplete commands

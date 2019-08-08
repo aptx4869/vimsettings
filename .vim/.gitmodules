@@ -1,0 +1,244 @@
+[submodule ".vim/bundle/vim-less"]
+	path = .vim/bundle/vim-less
+	url = https://github.com/groenewege/vim-less.git
+	ignore=dirty
+[submodule ".vim/bundle/vim-rails"]
+	path = .vim/bundle/vim-rails
+	url = git://github.com/tpope/vim-rails.git
+	ignore=dirty
+[submodule ".vim/bundle/NERD_Commenter"]
+	path = .vim/bundle/NERD_Commenter
+	url = git://github.com/vim-scripts/The-NERD-Commenter.git
+	ignore=dirty
+[submodule ".vim/bundle/XPTemplate"]
+	path = .vim/bundle/XPTemplate
+	url = git://github.com/drmingdrmer/xptemplate.git
+	ignore=dirty
+[submodule ".vim/bundle/NERD_tree"]
+	path = .vim/bundle/NERD_tree
+	url = git://github.com/vim-scripts/The-NERD-tree.git
+	ignore=dirty
+[submodule ".vim/bundle/matchit"]
+	path = .vim/bundle/matchit
+	url = git://github.com/vim-scripts/matchit.zip.git
+	ignore=dirty
+[submodule ".vim/bundle/vimwiki"]
+	path = .vim/bundle/vimwiki
+	url = git://github.com/vim-scripts/vimwiki.git
+	ignore=dirty
+[submodule ".vim/bundle/zencoding"]
+	path = .vim/bundle/zencoding
+	url = git://github.com/mattn/zencoding-vim.git
+	ignore=dirty
+[submodule ".vim/bundle/vim-easymotion"]
+	path = .vim/bundle/vim-easymotion
+	url = git://github.com/Lokaltog/vim-easymotion.git
+	ignore=dirty
+;[submodule ".vim/bundle/git-vim"]
+	;path = .vim/bundle/git-vim
+	;url = git://github.com/motemen/git-vim.git
+	;ignore=dirty
+[submodule ".vim/bundle/neocomplcache"]
+	path = .vim/bundle/neocomplcache
+	url = git://github.com/Shougo/neocomplcache.git
+	ignore=dirty
+[submodule ".vim/bundle/xml-vim"]
+	path = .vim/bundle/xml-vim
+	url = git://github.com/vim-scripts/xml.vim.git
+	ignore=dirty
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = git://github.com/ervandew/supertab.git
+	ignore=dirty
+[submodule ".vim/bundle/taglist"]
+	path = .vim/bundle/taglist
+	url = git://github.com/vim-scripts/taglist.vim.git
+	ignore=dirty
+[submodule ".vim/bundle/google-translator"]
+	path = .vim/bundle/google-translator
+	url = git://github.com/maksimr/vim-translator.git
+	ignore=dirty
+[submodule ".vim/bundle/fcitx"]
+	path = .vim/bundle/fcitx
+	url = git://github.com/vim-scripts/fcitx.vim.git
+	ignore=dirty
+[submodule ".vim/bundle/bufexplorer"]
+	path = .vim/bundle/bufexplorer
+	url = git://github.com/corntrace/bufexplorer.git
+	ignore=dirty
+;[submodule ".vim/bundle/vim-powerline"]
+	;path = .vim/bundle/vim-powerline
+	;url = git://github.com/Lokaltog/vim-powerline.git
+	;ignore=dirty
+;[submodule ".vim/bundle/command-t"]
+	;path = .vim/bundle/command-t
+	;url = git://git.wincent.com/command-t.git
+	;ignore=dirty
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
+	ignore=dirty
+[submodule ".vim/bundle/surround"]
+	path = .vim/bundle/surround
+	url = git://github.com/tpope/vim-surround.git
+	ignore=dirty
+[submodule ".vim/bundle/TeTrIs"]
+	path = .vim/bundle/TeTrIs
+	url = git://github.com/vim-scripts/TeTrIs.vim.git
+	ignore=dirty
+[submodule ".vim/bundle/qiushibaike"]
+	path = .vim/bundle/qiushibaike
+	url = git://github.com/vim-scripts/qiushibaike.git
+	ignore=dirty
+[submodule ".vim/bundle/colorizer"]
+	path = .vim/bundle/colorizer
+	url = git://github.com/lilydjwg/colorizer.git
+	ignore=dirty
+[submodule ".vim/bundle/vim-javascript"]
+	path = .vim/bundle/vim-javascript
+	url = git://github.com/pangloss/vim-javascript.git
+	ignore=dirty
+[submodule ".vim/bundle/ctrlp"]
+	path = .vim/bundle/ctrlp
+	url = git://github.com/kien/ctrlp.vim.git
+	ignore=dirty
+[submodule ".vim/bundle/solarized"]
+	path = .vim/bundle/solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+	ignore=dirty
+[submodule ".vim/bundle/vimcdoc"]
+	path = .vim/bundle/vimcdoc
+	url = git://github.com/ahao/vimcdoc.git
+	ignore=dirty
+[submodule ".vim/bundle/calendar"]
+	path = .vim/bundle/calendar
+	url = git://github.com/vim-scripts/calendar.vim--Matsumoto.git
+	ignore=dirty
+[submodule ".vim/vimcn/NERD_commenter"]
+	path = .vim/vimcn/NERD_commenter
+	url = git://github.com/vimcn/NERD_commenter.cnx.git
+	ignore=dirty
+[submodule ".vim/vimcn/neocompletecache"]
+	path = .vim/vimcn/neocompletecache
+	url = git://github.com/vimcn/neocompletecache.cnx.git
+	ignore=dirty
+[submodule ".vim/vimcn/vimwiki"]
+	path = .vim/vimcn/vimwiki
+	url = git://github.com/vimcn/vimwiki.vim.cnx.git
+	ignore=dirty
+[submodule ".vim/vimcn/matchit"]
+	path = .vim/vimcn/matchit
+	url = git://github.com/vimcn/matchit.vim.cnx.git
+	ignore=dirty
+[submodule ".vim/vimcn/NERD_tree"]
+	path = .vim/vimcn/NERD_tree
+	url = https://github.com/vimcn/NERD_tree.vim.cnx.git
+	ignore=dirty
+[submodule ".vim/bundle/vim-ruby"]
+	path = .vim/bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+	ignore=dirty
+[submodule ".vim/bundle/tabular"]
+	path = .vim/bundle/tabular
+	url = git://github.com/godlygeek/tabular.git
+	ignore=dirty
+[submodule ".vim/bundle/auto_mkdir"]
+	path = .vim/bundle/auto_mkdir
+	url = git://github.com/vim-scripts/auto_mkdir.git
+	ignore=dirty
+[submodule ".vim/bundle/ack"]
+	path = .vim/bundle/ack
+	url = git://github.com/mileszs/ack.vim.git
+	ignore=dirty
+[submodule ".vim/linux/echofunc"]
+	path = .vim/linux/echofunc
+	url = git://github.com/vim-scripts/echofunc.vim.git
+	ignore=dirty
+[submodule ".vim/bundle/xmledit"]
+	path = .vim/bundle/xmledit
+	url = git://github.com/sukima/xmledit.git
+	ignore=dirty
+[submodule ".vim/bundle/vim-coffee-script"]
+	path = .vim/bundle/vim-coffee-script
+	url = git://github.com/kchmck/vim-coffee-script.git
+	ignore=dirty
+[submodule ".vim/bundle/vim-jquery"]
+	path = .vim/bundle/vim-jquery
+	url = git://github.com/itspriddle/vim-jquery.git
+	ignore=dirty
+[submodule ".vim/bundle/trailing-whitespace"]
+	path = .vim/bundle/trailing-whitespace
+	url = git://github.com/bronson/vim-trailing-whitespace.git
+	ignore=dirty
+;[submodule ".vim/bundle/vim-snipmate"]
+	;path = .vim/bundle/vim-snipmate
+	;url = git://github.com/garbas/vim-snipmate.git
+;[submodule ".vim/bundle/snipmate-snippets"]
+	;path = .vim/bundle/snipmate-snippets
+	;url = git://github.com/spf13/snipmate-snippets.git
+;[submodule ".vim/bundle/vim-addon-mw-utils"]
+	;path = .vim/bundle/vim-addon-mw-utils
+	;url = git://github.com/MarcWeber/vim-addon-mw-utils.git
+;[submodule ".vim/bundle/tlib_vim"]
+	;path = .vim/bundle/tlib_vim
+	;url = git://github.com/tomtom/tlib_vim.git
+[submodule ".vim/bundle/vim-fugitive"]
+	path = .vim/bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+	ignore=dirty
+[submodule ".vim/bundle/vim-git"]
+	path = .vim/bundle/vim-git
+	url = git://github.com/tpope/vim-git.git
+	ignore=dirty
+[submodule ".vim/bundle/YCommentReader"]
+	path = .vim/bundle/YCommentReader
+	url = git://github.com/gvirus/YCommentReader.git
+	ignore=dirty
+[submodule ".vim/bundle/vim-abolish"]
+	path = .vim/bundle/vim-abolish
+	url = git://github.com/tpope/vim-abolish.git
+	ignore=dirty
+[submodule ".vim/bundle/dbext"]
+	path = .vim/bundle/dbext
+	url = git://github.com/vim-scripts/dbext.vim.git
+	ignore=dirty
+[submodule ".vim/bundle/vim-slim"]
+	path = .vim/bundle/vim-slim
+	url = git://github.com/slim-template/vim-slim.git
+	ignore=dirty
+[submodule ".vim/bundle/file-line"]
+	path = .vim/bundle/file-line
+	url = git://github.com/bogado/file-line.git
+[submodule ".vim/bundle/vim-repeat"]
+	path = .vim/bundle/vim-repeat
+	url = git://github.com/tpope/vim-repeat.git
+[submodule ".vim/bundle/ruby-refactoring"]
+	path = .vim/bundle/ruby-refactoring
+	url = git://github.com/ecomba/vim-ruby-refactoring.git
+[submodule ".vim/bundle/vim-textobj-user"]
+	path = .vim/bundle/vim-textobj-user
+	url = git://github.com/kana/vim-textobj-user.git
+[submodule ".vim/bundle/vim-textobj-rubyblock"]
+	path = .vim/bundle/vim-textobj-rubyblock
+	url = git://github.com/nelstrom/vim-textobj-rubyblock.git
+[submodule ".vim/bundle/visSum"]
+	path = .vim/bundle/visSum
+	url = git://github.com/vim-scripts/visSum.vim.git
+[submodule ".vim/bundle/vim-blockle"]
+	path = .vim/bundle/vim-blockle
+	url = git://github.com/jgdavey/vim-blockle.git
+[submodule ".vim/bundle/vim-indent-guides"]
+	path = .vim/bundle/vim-indent-guides
+	url = git://github.com/nathanaelkane/vim-indent-guides.git
+[submodule ".vim/bundle/nginx-syntax"]
+	path = .vim/bundle/nginx-syntax
+	url = https://github.com/evanmiller/nginx-vim-syntax.git
+[submodule ".vim/bundle/easy-align"]
+	path = .vim/bundle/easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
+[submodule ".vim/bundle/vim-airline"]
+	path = .vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule ".vim/bundle/vundle"]
+	path = .vim/bundle/vundle
+	url = https://github.com/gmarik/vundle.git

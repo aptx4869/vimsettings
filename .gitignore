@@ -1,3 +1,5 @@
 *.swp
 .netrwhist
 tags
+tags-cn
+.vim/spell

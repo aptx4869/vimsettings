@@ -24,25 +24,16 @@ ino /= <Space>/=<Space>
 ino ;; <Esc>A:<Enter>
 ino << <space><<<space>
 ino <= <space><=<space>
-ino <buffer> $f #--- P ----------------------------------------------<esc>FPxi
-ino <buffer> $i import
-ino <buffer> $p print
-ino <buffer> $r return
-ino <buffer> [ <C-R>=<SID>Double("[","]")<CR>
-ino <buffer> { <C-R>=<SID>Double("{","}")<CR>
-ino <buffer> ' <C-R>=<SID>Double("'","'")<CR>
-ino <buffer> " <C-R>=<SID>Double('"','"')<CR>
 ino == <Space>==<Space>
 ino >= <space>>=<space>
 ino >> <space>>><space>
+
+ino <buffer> $f #--- P ----------------------------------------------<esc>FPxi
+ino <buffer> $i import<space>
+ino <buffer> $p print<space>
+ino <buffer> $r return<space>
+
 map <buffer> <leader>1 /class
 map <buffer> <leader>2 /def
 map <buffer> <leader>C ?class
 map <buffer> <leader>D ?def
-function! s:Double(left,right)
-    if strpart(getline(line(".")),col(".")-2,2) == a:left . a:right
-	return "\<Del>"
-    else
-	return a:left . a:right . "\<Left>"
-    endif
-endfunction

@@ -28,8 +28,8 @@ set <F12> =[24~
 "}}}
 
 for i in ["", "c", "i", "x"]
-    "Shift/Alt + F1-F12{{{
-    "" these should go into .Xresources {{{
+"Shift/Alt + F1-F12{{{
+"" these should go into .Xresources {{{
     "URxvt*keysym.S-F1:  \033\[[23$
     "URxvt*keysym.S-F2:  \033\[[24$
     "URxvt*keysym.S-F3:  \033\[[11^
@@ -149,11 +149,11 @@ for i in ["", "c", "i", "x"]
     "exe i . "map ![24;4~ <S-M-F12>"
 
 
-    ""}}}
-    "" Alt+ h j k l{{{
+""}}}
+"" Alt+ h j k l{{{
     exe i . "map h <M-h>"
     exe i . "map j <M-j>"
     exe i . "map k <M-k>"
     exe i . "map l <M-l>"
-    "}}}
+"}}}
 endfor

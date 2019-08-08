@@ -1,24 +1,19 @@
-	ignore=dirty
 [submodule ".vim/bundle/vim-less"]
 	path = .vim/bundle/vim-less
 	url = https://github.com/groenewege/vim-less.git
-	ignore=dirty
 [submodule ".vim/bundle/vim-rails"]
 	path = .vim/bundle/vim-rails
-	url = git://github.com/tpope/vim-rails.git
+	url = git@github.com:tpope/vim-rails.git
 	ignore=dirty
 [submodule ".vim/bundle/NERD_Commenter"]
 	path = .vim/bundle/NERD_Commenter
 	url = git://github.com/vim-scripts/The-NERD-Commenter.git
-	ignore=dirty
 [submodule ".vim/bundle/XPTemplate"]
 	path = .vim/bundle/XPTemplate
 	url = git://github.com/drmingdrmer/xptemplate.git
-	ignore=dirty
 [submodule ".vim/bundle/NERD_tree"]
 	path = .vim/bundle/NERD_tree
 	url = git://github.com/vim-scripts/The-NERD-tree.git
-	ignore=dirty
 [submodule ".vim/bundle/matchit"]
 	path = .vim/bundle/matchit
 	url = git://github.com/vim-scripts/matchit.zip.git
@@ -38,7 +33,6 @@
 [submodule ".vim/bundle/taglist"]
 	path = .vim/bundle/taglist
 	url = git://github.com/vim-scripts/taglist.vim.git
-	ignore=dirty
 [submodule ".vim/bundle/google-translator"]
 	path = .vim/bundle/google-translator
 	url = git://github.com/maksimr/vim-translator.git
@@ -46,50 +40,31 @@
 [submodule ".vim/bundle/fcitx"]
 	path = .vim/bundle/fcitx
 	url = git://github.com/vim-scripts/fcitx.vim.git
-	ignore=dirty
 [submodule ".vim/bundle/bufexplorer"]
 	path = .vim/bundle/bufexplorer
 	url = git://github.com/corntrace/bufexplorer.git
-	ignore=dirty
-;[submodule ".vim/bundle/command-t"]
-	;path = .vim/bundle/command-t
-	;url = git://git.wincent.com/command-t.git
-	;ignore=dirty
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
-	ignore=dirty
 [submodule ".vim/bundle/surround"]
 	path = .vim/bundle/surround
 	url = git://github.com/tpope/vim-surround.git
-	ignore=dirty
-[submodule ".vim/bundle/TeTrIs"]
-	path = .vim/bundle/TeTrIs
-	url = git://github.com/vim-scripts/TeTrIs.vim.git
-	ignore=dirty
 [submodule ".vim/bundle/qiushibaike"]
 	path = .vim/bundle/qiushibaike
 	url = git://github.com/vim-scripts/qiushibaike.git
-	ignore=dirty
 [submodule ".vim/bundle/colorizer"]
 	path = .vim/bundle/colorizer
 	url = git://github.com/lilydjwg/colorizer.git
-	ignore=dirty
 [submodule ".vim/bundle/vim-javascript"]
 	path = .vim/bundle/vim-javascript
 	url = git://github.com/pangloss/vim-javascript.git
-	ignore=dirty
 [submodule ".vim/bundle/ctrlp"]
 	path = .vim/bundle/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
-	ignore=dirty
 [submodule ".vim/bundle/solarized"]
 	path = .vim/bundle/solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
 	ignore=dirty
-[submodule ".vim/bundle/vimcdoc"]
-	path = .vim/bundle/vimcdoc
-	url = git://github.com/ahao/vimcdoc.git
 [submodule ".vim/bundle/easy-align"]
 	path = .vim/bundle/easy-align
 	url = git@github.com:junegunn/vim-easy-align.git
@@ -171,3 +146,6 @@
 [submodule ".vim/bundle/caniuse"]
 	path = .vim/bundle/caniuse
 	url = git@github.com:ruanyl/vim-caniuse.git
+[submodule ".vim/bundle/vim-dispatch"]
+	path = .vim/bundle/vim-dispatch
+	url = git@github.com:tpope/vim-dispatch.git

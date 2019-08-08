@@ -21,6 +21,24 @@ au BufRead,BufNewFile *.html setf html
 au FileType python,ruby,sh :call Py()
 au FileType cpp,c,cc,h,html,perl :call Cc()
 au FileType c,cc,cpp,h,html,python :call Cp()
+
+au FileType eruby,javascript,python,ruby,sh,cpp,c,cc,h,html,perl :call Ad()
+
+fu Ad()
+    ino <buffer> [[ <C-R>=<SID>Double("[","]")<CR>
+    ino <buffer> {{ <C-R>=<SID>Double("{","}")<CR>
+    ino <buffer> '' <C-R>=<SID>Double("'","'")<CR>
+    ino <buffer> "" <C-R>=<SID>Double('"','"')<CR>
+endf
+
+fu! s:Double(left,right)
+    if strpart(getline(line(".")),col(".")-2,2) == a:left . a:right
+	return "\<Del>"
+    el
+	return a:left . a:right . "\<Left>"
+    en
+endf
+
 fu Cp()
     ino , ,<SPACE>
     ino ; ;<SPACE>

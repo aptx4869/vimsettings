@@ -18,8 +18,8 @@ let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'vimshell' : $HOME.'/.vimshell_hist',
     \ 'scheme' : $HOME.'/.gosh_completions',
     \ 'javascript' : $HOME.'/.vim/dict/js-jquery.dict',
-    \ 'ruby' : $HOME.'/.vim/dict/ruby.dict',
     \ 'coffee' : $HOME.'/.vim/dict/coffeescript.dict',
+    \ 'ruby' : $HOME.'/.vim/dict/ruby.dict',
     \ 'text' : $HOME.'/.vim/dict/english.dict'
     \ }
 

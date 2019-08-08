@@ -1,0 +1,8 @@
+= <T_CREATE_DATE> =
+== To do ==
+* [ ] this a template
+* [ ] [[line2]]
+   - [ ] [[css]]
+   - [ ] [[html]]
+
+== [[dictionary]] ==

@@ -2,7 +2,8 @@
 
 ## Usage
 
--**Backup** your setting first, and then run-
+~~**Backup** your setting first, and then run~~
+(No need for this now, .vim and .vimrc are automaticly backed up with the INSTALL script but you can do it yourself)
 ```
 curl -L https://github.com/aptx4869/vimsettings/raw/master/INSTALL.sh | sh
 ```
@@ -38,3 +39,8 @@ I am useing a little bit strang Dvorak keyboard, so you should modify the keybin
 * [*vimwiki*](/vim-scripts/vimwiki)
 * [*XPTemplate*](/drmingdrmer/xptemplate)
 * [*zencoding*](/mattn/zencoding-vim)
+
+## Tips
+* plugin settings 
+    plugin settings are located in .vim/etc folder ... to be continue
+    
