@@ -13,20 +13,20 @@ set smarttab
 set autoindent
 set shiftwidth=2
 
-noremap <buffer> K :!ruby %<CR>
+"noremap <buffer> K :!ruby %<CR>
 
-nnoremap <buffer> <F1> :if strpart(getline(1),0,21) !='#!/usr/math/bin/ruby'<CR>0put ='#!/usr/math/bin/ruby'<CR>put =''<CR>endif<CR>:if getline(3) != ""<CR>1put =''<CR>endif<CR><Space>3Gi
+"nnoremap <buffer> <F1> :if strpart(getline(1),0,21) !='#!/usr/math/bin/ruby'<CR>0put ='#!/usr/math/bin/ruby'<CR>put =''<CR>endif<CR>:if getline(3) != ""<CR>1put =''<CR>endif<CR><Space>3Gi
 
 inoremap <buffer> ;; ;
 inoremap <buffer> ;e <CR><BS>end
 inoremap <buffer> ;h <Space>=><Space>
 
-inoremap <buffer> " <C-R>=<SID>Double('"','"')<CR>
-inoremap <buffer> ` <C-R>=<SID>Double('`','`')<CR>
-inoremap <buffer> ' <C-R>=<SID>Double("\'","\'")<CR>
-inoremap <buffer> ( ()<Left>
-inoremap <buffer> [ <C-R>=<SID>Double("[","]")<CR>
-inoremap <buffer> { <C-R>=<SID>Double("{","}")<CR>
+"inoremap <buffer> " <C-R>=<SID>Double('"','"')<CR>
+"inoremap <buffer> ` <C-R>=<SID>Double('`','`')<CR>
+"inoremap <buffer> ' <C-R>=<SID>Double("\'","\'")<CR>
+"inoremap <buffer> ( ()<Left>
+"inoremap <buffer> [ <C-R>=<SID>Double("[","]")<CR>
+"inoremap <buffer> { <C-R>=<SID>Double("{","}")<CR>
 
 function! s:Double(left,right)
     if strpart(getline(line(".")),col(".")-2,2) == a:left . a:right
