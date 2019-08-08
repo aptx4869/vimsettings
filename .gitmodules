@@ -27,33 +27,9 @@
 	path = .vim/bundle/vimwiki
 	url = git://github.com/vim-scripts/vimwiki.git
 	ignore=dirty
-[submodule ".vim/bundle/zencoding"]
-	path = .vim/bundle/zencoding
-	url = git://github.com/mattn/zencoding-vim.git
-	ignore=dirty
-[submodule ".vim/bundle/LaTeX_Suite"]
-	path = .vim/bundle/LaTeX_Suite
-	url = git://github.com/vim-scripts/LaTeX-Suite-aka-Vim-LaTeX.git
-	ignore=dirty
 [submodule ".vim/bundle/vim-easymotion"]
 	path = .vim/bundle/vim-easymotion
 	url = git://github.com/Lokaltog/vim-easymotion.git
-	ignore=dirty
-[submodule ".vim/bundle/git-vim"]
-	path = .vim/bundle/git-vim
-	url = git://github.com/motemen/git-vim.git
-	ignore=dirty
-[submodule ".vim/bundle/neocomplcache"]
-	path = .vim/bundle/neocomplcache
-	url = git://github.com/Shougo/neocomplcache.git
-	ignore=dirty
-[submodule ".vim/bundle/xml-vim"]
-	path = .vim/bundle/xml-vim
-	url = git://github.com/vim-scripts/xml.vim.git
-	ignore=dirty
-[submodule ".vim/bundle/supertab"]
-	path = .vim/bundle/supertab
-	url = git://github.com/ervandew/supertab.git
 	ignore=dirty
 [submodule ".vim/bundle/echofunc"]
 	path = .vim/bundle/echofunc
@@ -74,10 +50,6 @@
 [submodule ".vim/bundle/bufexplorer"]
 	path = .vim/bundle/bufexplorer
 	url = git://github.com/corntrace/bufexplorer.git
-	ignore=dirty
-[submodule ".vim/bundle/vim-powerline"]
-	path = .vim/bundle/vim-powerline
-	url = git://github.com/Lokaltog/vim-powerline.git
 	ignore=dirty
 ;[submodule ".vim/bundle/command-t"]
 	;path = .vim/bundle/command-t
@@ -118,3 +90,84 @@
 [submodule ".vim/bundle/vimcdoc"]
 	path = .vim/bundle/vimcdoc
 	url = git://github.com/ahao/vimcdoc.git
+[submodule ".vim/bundle/easy-align"]
+	path = .vim/bundle/easy-align
+	url = git@github.com:junegunn/vim-easy-align.git
+[submodule ".vim/bundle/editorconfig"]
+	path = .vim/bundle/editorconfig
+	url = git@github.com:editorconfig/editorconfig-vim.git
+[submodule ".vim/bundle/tabular"]
+	path = .vim/bundle/tabular
+	url = git://github.com/godlygeek/tabular.git
+[submodule ".vim/bundle/vim-airline"]
+	path = .vim/bundle/vim-airline
+	url = git@github.com:vim-airline/vim-airline.git
+[submodule ".vim/bundle/vim-fugitive"]
+	path = .vim/bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/vim-slim"]
+	path = .vim/bundle/vim-slim
+	url = git://github.com/slim-template/vim-slim.git
+[submodule ".vim/bundle/vim-git"]
+	path = .vim/bundle/vim-git
+	url = git://github.com/tpope/vim-git.git
+[submodule ".vim/bundle/auto_mkdir"]
+	path = .vim/bundle/auto_mkdir
+	url = git://github.com/vim-scripts/auto_mkdir.git
+[submodule ".vim/bundle/nginx-syntax"]
+	path = .vim/bundle/nginx-syntax
+	url = git@github.com:evanmiller/nginx-vim-syntax.git
+[submodule ".vim/bundle/trailing-whitespace"]
+	path = .vim/bundle/trailing-whitespace
+	url = git://github.com/bronson/vim-trailing-whitespace.git
+[submodule ".vim/bundle/vim-abolish"]
+	path = .vim/bundle/vim-abolish
+	url = git://github.com/tpope/vim-abolish.git
+[submodule ".vim/bundle/vim-blockle"]
+	path = .vim/bundle/vim-blockle
+	url = git@github.com:jgdavey/vim-blockle.git
+[submodule ".vim/bundle/vim-indent-guides"]
+	path = .vim/bundle/vim-indent-guides
+	url = git@github.com:nathanaelkane/vim-indent-guides.git
+[submodule ".vim/bundle/vim-repeat"]
+	path = .vim/bundle/vim-repeat
+	url = git@github.com:tpope/vim-repeat.git
+[submodule ".vim/bundle/vim-textobj-rubyblock"]
+	path = .vim/bundle/vim-textobj-rubyblock
+	url = git@github.com:nelstrom/vim-textobj-rubyblock.git
+[submodule ".vim/bundle/vim-textobj-user"]
+	path = .vim/bundle/vim-textobj-user
+	url = git@github.com:kana/vim-textobj-user.git
+[submodule ".vim/bundle/ultisnips"]
+	path = .vim/bundle/ultisnips
+	url = git@github.com:SirVer/ultisnips.git
+[submodule ".vim/bundle/vim-vue"]
+	path = .vim/bundle/vim-vue
+	url = git@github.com:posva/vim-vue.git
+[submodule ".vim/bundle/vim-template"]
+	path = .vim/bundle/vim-template
+	url = git@github.com:aperezdc/vim-template.git
+[submodule ".vim/bundle/vim-coffee-script"]
+	path = .vim/bundle/vim-coffee-script
+	url = git://github.com/kchmck/vim-coffee-script.git
+[submodule ".vim/bundle/file-line"]
+	path = .vim/bundle/file-line
+	url = git://github.com/bogado/file-line.git
+[submodule ".vim/bundle/neocomplete"]
+	path = .vim/bundle/neocomplete
+	url = git@github.com:Shougo/neocomplete.vim.git
+[submodule ".vim/bundle/vim-rspec"]
+	path = .vim/bundle/vim-rspec
+	url = git@github.com:thoughtbot/vim-rspec.git
+[submodule ".vim/bundle/vim-rvm"]
+	path = .vim/bundle/vim-rvm
+	url = git@github.com:tpope/vim-rvm.git
+[submodule ".vim/bundle/vim-snippets"]
+	path = .vim/bundle/vim-snippets
+	url = git://github.com/honza/vim-snippets.git
+[submodule ".vim/bundle/typescript-vim"]
+	path = .vim/bundle/typescript-vim
+	url = git@github.com:leafgarland/typescript-vim.git
+[submodule ".vim/bundle/caniuse"]
+	path = .vim/bundle/caniuse
+	url = git@github.com:ruanyl/vim-caniuse.git
